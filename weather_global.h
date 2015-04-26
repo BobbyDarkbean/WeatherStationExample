@@ -37,6 +37,12 @@ enum TemperatureUnit
     TU_Fahrenheit
 };
 
+enum PressureUnit
+{
+    PU_MillimeterMercuryColumn,
+    PU_Millibars
+};
+
 } // namespace WeatherStation
 
 #endif // WEATHER_GLOBAL_H
