@@ -31,6 +31,12 @@ enum WindDirection
     WD_NorthWest
 };
 
+enum TemperatureUnit
+{
+    TU_Celcius,
+    TU_Fahrenheit
+};
+
 } // namespace WeatherStation
 
 #endif // WEATHER_GLOBAL_H
