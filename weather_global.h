@@ -39,8 +39,8 @@ enum TemperatureUnit
 
 enum PressureUnit
 {
-    PU_MillimeterMercuryColumn,
-    PU_Millibars
+    PU_MmHg,
+    PU_Mbar
 };
 
 } // namespace WeatherStation
