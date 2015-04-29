@@ -3,6 +3,26 @@
 
 namespace WeatherStation {
 
+const QChar NORTH_SIGN('N');
+const QChar SOUTH_SIGN('S');
+const QChar EAST_SIGN('E');
+const QChar WEST_SIGN('W');
+
+namespace {
+QString coordinates_helper(qreal crdVal, QChar hemisphere)
+{
+    int deg = crdVal;
+    qreal min = (crdVal - deg) * 60;
+
+    return QString("%1%2%3%4%5")
+            .arg(QString::number(deg))
+            .arg(QChar(0xb0))
+            .arg(QString::number(qMin(59.9, min), 'f', 1))
+            .arg(QChar('\''))
+            .arg(hemisphere);
+}
+}
+
 qreal fahrenheitTemperature(qreal celcius)
 {
     return celcius * 1.8 + 32;
@@ -67,6 +87,16 @@ QString pressureUnitStr(PressureUnit pu)
     case PU_Mbar:           return QObject::tr("mbar");
     default:                return QObject::tr("n/a");
     }
+}
+
+QString latitudeStr(qreal latitude)
+{
+    return coordinates_helper(qAbs(latitude), !(latitude < 0) ? NORTH_SIGN : SOUTH_SIGN);
+}
+
+QString longitudeStr(qreal longitude)
+{
+    return coordinates_helper(qAbs(longitude), !(longitude < 0) ? EAST_SIGN : WEST_SIGN);
 }
 
 } // WeatherStation

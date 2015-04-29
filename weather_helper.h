@@ -16,6 +16,9 @@ QString windDirectionStr(WindDirection wd);
 QString temperatureUnitStr(TemperatureUnit tu);
 QString pressureUnitStr(PressureUnit pu);
 
+QString latitudeStr(qreal latitude);
+QString longitudeStr(qreal longitude);
+
 } // namespace WeatherStation
 
 #endif // WEATHER_HELPER_H
