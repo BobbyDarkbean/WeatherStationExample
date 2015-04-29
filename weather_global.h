@@ -28,7 +28,11 @@ enum WindDirection
     WD_South,
     WD_SouthWest,
     WD_West,
-    WD_NorthWest
+    WD_NorthWest,
+
+    WD_MIN = WD_North,
+    WD_MAX = WD_NorthWest,
+    WD_COUNT
 };
 
 enum TemperatureUnit

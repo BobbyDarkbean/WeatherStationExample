@@ -13,6 +13,11 @@ qreal millibarPressure(qreal mmHg)
     return mmHg * 1.3332199208;
 }
 
+WindDirection windDirection(int degrees)
+{
+    return WindDirection(((degrees + 22) / 45) % WD_COUNT);
+}
+
 QString weatherStateStr(WeatherState ws)
 {
     switch (ws) {

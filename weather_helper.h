@@ -9,6 +9,8 @@ namespace WeatherStation {
 qreal fahrenheitTemperature(qreal celcius);
 qreal millibarPressure(qreal mmHg);
 
+WindDirection windDirection(int degrees);
+
 QString weatherStateStr(WeatherState ws);
 QString windDirectionStr(WindDirection wd);
 QString temperatureUnitStr(TemperatureUnit tu);
