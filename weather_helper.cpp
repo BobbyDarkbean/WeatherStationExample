@@ -3,6 +3,16 @@
 
 namespace WeatherStation {
 
+qreal fahrenheitTemperature(qreal celcius)
+{
+    return celcius * 1.8 + 32;
+}
+
+qreal millibarPressure(qreal mmHg)
+{
+    return mmHg * 1.3332199208;
+}
+
 QString weatherStateStr(WeatherState ws)
 {
     switch (ws) {
