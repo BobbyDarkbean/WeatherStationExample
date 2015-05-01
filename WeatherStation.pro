@@ -6,10 +6,12 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 HEADERS += \
     weather_global.h \
     weather.h \
-    locationinfo.h
+    locationinfo.h \
+    location.h
 
 SOURCES += \
     main.cpp \
     weather.cpp \
-    locationinfo.cpp
+    locationinfo.cpp \
+    location.cpp
 
