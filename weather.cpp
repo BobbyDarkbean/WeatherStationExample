@@ -1,22 +1,23 @@
 #include <QDataStream>
+#include <qmath.h>
 #include "weather.h"
 
 namespace WeatherStation {
 
 const qreal TEMPERATURE_MIN = -273.3;
 const qreal PRESSURE_MIN = 0.0;
-const int HUMDITY_MIN = 0;
-const int HUMDITY_MAX = 100;
-const int WINDDIRECTION_MIN = 0;
-const int WINDDIRECTION_MAX = 359;
-const qreal WINDSPEED_MIN = 0.0;
+const int HUMIDITY_MIN = 0;
+const int HUMIDITY_MAX = 100;
+const int WIND_DIRECTION_MIN = 0;
+const int WIND_DIRECTION_MAX = 359;
+const qreal WIND_SPEED_MIN = 0.0;
 
 Weather::Weather()
     : m_temperature(0.0),
       m_pressure(0.0),
       m_humidity(0),
       m_windDirection(0),
-      m_windSpeed(0),
+      m_windSpeed(0.0),
       m_state(WS_NonAvailable)
 { }
 Weather::~Weather()
@@ -45,32 +46,32 @@ Weather &Weather::operator =(const Weather &other)
 
 qreal Weather::temperature() const
 { return m_temperature; }
-void Weather::setTemperature(const qreal value)
+void Weather::setTemperature(qreal value)
 { m_temperature = qMax(value, TEMPERATURE_MIN); }
 
 qreal Weather::pressure() const
 { return m_pressure; }
-void Weather::setPressure(const qreal value)
+void Weather::setPressure(qreal value)
 { m_pressure = qMax(value, PRESSURE_MIN); }
 
 int Weather::humidity() const
 { return m_humidity; }
 void Weather::setHumidity(int value)
-{ m_humidity = qBound(HUMDITY_MIN, value, HUMDITY_MAX); }
+{ m_humidity = qBound(HUMIDITY_MIN, value, HUMIDITY_MAX); }
 
 int Weather::windDirection() const
 { return m_windDirection; }
 void Weather::setWindDirection(int value)
-{ m_windDirection = qBound(WINDDIRECTION_MIN, value, WINDDIRECTION_MAX); }
+{ m_windDirection = qBound(WIND_DIRECTION_MIN, value, WIND_DIRECTION_MAX); }
 
 qreal Weather::windSpeed() const
 { return m_windSpeed; }
 void Weather::setWindSpeed(qreal value)
-{ m_windSpeed = qMax(value, WINDSPEED_MIN); }
+{ m_windSpeed = qMax(value, WIND_SPEED_MIN); }
 
 WeatherState Weather::state() const
 { return m_state; }
-void Weather::setState(const WeatherState &value)
+void Weather::setState(WeatherState value)
 { m_state = value; }
 
 QDataStream &operator >>(QDataStream &stream, Weather &weather)
@@ -106,18 +107,18 @@ QDataStream &operator <<(QDataStream &stream, const Weather &weather)
 
 bool operator ==(const Weather &a, const Weather &b)
 {
-    return  static_cast<int>(a.temperature() * 10) == static_cast<int>(b.temperature() * 10)
-            && static_cast<int>(a.pressure() * 10) == static_cast<int>(b.pressure() * 10)
+    return  static_cast<int>(qFloor(a.temperature()) * 10) == static_cast<int>(qFloor(b.temperature()) * 10)
+            && static_cast<int>(qFloor(a.pressure()) * 10) == static_cast<int>(qFloor(b.pressure()) * 10)
             && a.humidity() == b.humidity()
             && a.windDirection() == b.windDirection()
-            && static_cast<int>(a.windSpeed() * 10) == static_cast<int>(b.windSpeed() * 10)
+            && static_cast<int>(qFloor(a.windSpeed()) * 10) == static_cast<int>(qFloor(b.windSpeed()) * 10)
             && a.state() == b.state();
 
 }
 
 bool operator !=(const Weather &a, const Weather &b)
 {
-      return !(a == b);
+    return !(a == b);
 }
 
 } // namespace WeatherStation

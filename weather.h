@@ -12,26 +12,26 @@ public:
     Weather();
     virtual ~Weather();
 
-    Weather(const Weather &other);
-    Weather &operator =(const Weather &other);
+    Weather(const Weather &);
+    Weather &operator =(const Weather &);
 
     qreal temperature() const;
-    void setTemperature(const qreal value);
+    void setTemperature(qreal );
 
     qreal pressure() const;
-    void setPressure(const qreal value);
+    void setPressure(qreal );
 
     int humidity() const;
-    void setHumidity(int value);
+    void setHumidity(int );
 
     int windDirection() const;
-    void setWindDirection(int value);
+    void setWindDirection(int );
 
     qreal windSpeed() const;
-    void setWindSpeed(qreal value);
+    void setWindSpeed(qreal );
 
     WeatherState state() const;
-    void setState(const WeatherState &value);
+    void setState(WeatherState );
 
 private:
     qreal m_temperature;
@@ -42,10 +42,10 @@ private:
     WeatherState m_state;
 };
 
-QDataStream &operator >>(QDataStream &stream, Weather &weather);
-QDataStream &operator <<(QDataStream &stream, const Weather &weather);
-bool operator ==(const Weather &a, const Weather &b);
-bool operator !=(const Weather &a, const Weather &b);
+QDataStream &operator >>(QDataStream &, Weather &);
+QDataStream &operator <<(QDataStream &, const Weather &);
+bool operator ==(const Weather &, const Weather &);
+bool operator !=(const Weather &, const Weather &);
 
 } // namespace WeatherStation
 
