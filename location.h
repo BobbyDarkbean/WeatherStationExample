@@ -16,19 +16,19 @@ public:
     Location();
     virtual ~Location();
 
-    Q_DISABLE_COPY(Location)
-
     LocationInfo locationInfo() const;
     void setLocationInfo(const LocationInfo &locationInfo);
 
-    addWeather(const QDate &, const Weather &);
-    weather(const QDate &);
-    clearWeatherData();
+    void addWeather(const QDate &, const Weather &);
+    Weather weather(const QDate &);
+    void clearWeatherData();
 
-    readDataFrom(const QDataStream &);
-    writeDataTo(QDataStream &);
+    void readDataFrom(const QDataStream &);
+    void writeDataTo(QDataStream &);
 
 private:
+    Q_DISABLE_COPY(Location)
+
     LocationInfo m_locationInfo;
     QMap<QDate, Weather> m_weatherData;
 

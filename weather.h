@@ -16,22 +16,22 @@ public:
     Weather &operator =(const Weather &);
 
     qreal temperature() const;
-    void setTemperature(qreal );
+    void setTemperature(qreal);
 
     qreal pressure() const;
-    void setPressure(qreal );
+    void setPressure(qreal);
 
     int humidity() const;
-    void setHumidity(int );
+    void setHumidity(int);
 
     int windDirection() const;
-    void setWindDirection(int );
+    void setWindDirection(int);
 
     qreal windSpeed() const;
-    void setWindSpeed(qreal );
+    void setWindSpeed(qreal);
 
     WeatherState state() const;
-    void setState(WeatherState );
+    void setState(WeatherState);
 
 private:
     qreal m_temperature;

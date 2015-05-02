@@ -4,14 +4,13 @@ QT = core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 HEADERS += \
-    weather_global.h \
-    weather.h \
+    location.h \
     locationinfo.h \
-    location.h
+    weather.h \
+    weather_global.h
 
 SOURCES += \
-    main.cpp \
-    weather.cpp \
+    location.cpp \
     locationinfo.cpp \
-    location.cpp
-
+    main.cpp \
+    weather.cpp

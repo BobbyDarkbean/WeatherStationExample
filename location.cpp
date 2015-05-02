@@ -3,41 +3,40 @@
 namespace WeatherStation {
 
 Location::Location()
-{
-
-}
+    : m_locationInfo(),
+      m_weatherData()
+{ }
 
 Location::~Location()
-{
-
-}
+{ }
 
 LocationInfo Location::locationInfo() const
 { return m_locationInfo; }
 void Location::setLocationInfo(const LocationInfo &locationInfo)
 { m_locationInfo = locationInfo; }
 
-Location::addWeather(const QDate &, const Weather &)
+void Location::addWeather(const QDate &date, const Weather &weather)
+{
+    m_weatherData[date] = weather;
+}
+
+Weather Location::weather(const QDate &date)
+{
+    // Что возвращать, если такая дата не найдена?
+    return m_weatherData[date];
+}
+
+void Location::clearWeatherData()
 {
 
 }
 
-Location::weather(const QDate &)
+void Location::readDataFrom(const QDataStream &stream)
 {
 
 }
 
-Location::clearWeatherData()
-{
-
-}
-
-Location::readDataFrom(const QDataStream &)
-{
-
-}
-
-Location::writeDataTo(QDataStream &)
+void Location::writeDataTo(QDataStream &stream)
 {
 
 }

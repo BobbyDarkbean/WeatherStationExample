@@ -10,7 +10,7 @@ const qreal LONGITUDE_MIN = -180;
 const qreal LONGITUDE_MAX = 180;
 
 LocationInfo::LocationInfo()
-    : m_description(""),
+    : m_description(),
       m_latitude(0.0),
       m_longitude(0.0)
 { }
@@ -73,8 +73,8 @@ QDataStream &operator <<(QDataStream &stream, const LocationInfo &locatioInfo)
 bool operator ==(const LocationInfo &a, const LocationInfo &b)
 {
     return  a.description() == b.description()
-            && static_cast<int>(qFloor(a.longitude()) * 10) == static_cast<int>(qFloor(b.longitude()) * 10)
-            && static_cast<int>(qFloor(a.latitude()) * 10) == static_cast<int>(qFloor(b.latitude()) * 10);
+            && static_cast<int>(qFloor(a.longitude() * 1E+4)) == static_cast<int>(qFloor(b.longitude() * 1E+4))
+            && static_cast<int>(qFloor(a.latitude() * 1E+4)) == static_cast<int>(qFloor(b.latitude() * 1E+4));
 }
 
 bool operator !=(const LocationInfo &a, const LocationInfo &b)

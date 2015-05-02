@@ -107,11 +107,11 @@ QDataStream &operator <<(QDataStream &stream, const Weather &weather)
 
 bool operator ==(const Weather &a, const Weather &b)
 {
-    return  static_cast<int>(qFloor(a.temperature()) * 10) == static_cast<int>(qFloor(b.temperature()) * 10)
-            && static_cast<int>(qFloor(a.pressure()) * 10) == static_cast<int>(qFloor(b.pressure()) * 10)
+    return  static_cast<int>(qFloor(a.temperature() * 10)) == static_cast<int>(qFloor(b.temperature() * 10))
+            && static_cast<int>(qFloor(a.pressure() * 10)) == static_cast<int>(qFloor(b.pressure() * 10))
             && a.humidity() == b.humidity()
             && a.windDirection() == b.windDirection()
-            && static_cast<int>(qFloor(a.windSpeed()) * 10) == static_cast<int>(qFloor(b.windSpeed()) * 10)
+            && static_cast<int>(qFloor(a.windSpeed() * 10)) == static_cast<int>(qFloor(b.windSpeed() * 10))
             && a.state() == b.state();
 
 }
