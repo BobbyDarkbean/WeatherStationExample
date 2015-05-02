@@ -3,7 +3,7 @@
 
 #include <QMap>
 #include <QDate>
-//#include <qobjectdefs.h> //почему не ругается на Q_DISABLE_COPY(Location)?
+//#include <qobjectdefs.h> //Значит можно убрать?
 
 #include "weather.h"
 #include "locationinfo.h"
@@ -23,7 +23,7 @@ public:
     Weather weather(const QDate &);
     void clearWeatherData();
 
-    void readDataFrom(const QDataStream &);
+    void readDataFrom(QDataStream &);
     void writeDataTo(QDataStream &);
 
 private:
