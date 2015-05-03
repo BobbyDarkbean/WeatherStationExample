@@ -28,7 +28,11 @@ enum WindDirection
     WD_South,
     WD_SouthWest,
     WD_West,
-    WD_NorthWest
+    WD_NorthWest,
+
+    WD_MIN = WD_North,
+    WD_MAX = WD_NorthWest,
+    WD_COUNT
 };
 
 enum TemperatureUnit
@@ -39,8 +43,8 @@ enum TemperatureUnit
 
 enum PressureUnit
 {
-    PU_MillimeterMercuryColumn,
-    PU_Millibars
+    PU_MmHg,
+    PU_Mbar
 };
 
 } // namespace WeatherStation
