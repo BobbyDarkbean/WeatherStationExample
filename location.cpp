@@ -8,8 +8,7 @@ Location::Location()
       m_weatherData()
 { }
 
-Location::~Location()
-{ }
+Location::~Location() { }
 
 LocationInfo Location::locationInfo() const
 { return m_locationInfo; }

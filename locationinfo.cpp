@@ -8,6 +8,7 @@ const qreal LATITUDE_MIN = -90;
 const qreal LATITUDE_MAX = 90;
 const qreal LONGITUDE_MIN = -180;
 const qreal LONGITUDE_MAX = 180;
+const qreal GEO_PRECISION_FACTOR = 1e+4;
 
 LocationInfo::LocationInfo()
     : m_description(),
@@ -73,8 +74,12 @@ QDataStream &operator <<(QDataStream &stream, const LocationInfo &locatioInfo)
 bool operator ==(const LocationInfo &a, const LocationInfo &b)
 {
     return  a.description() == b.description()
-            && static_cast<int>(qFloor(a.longitude() * 1E+4)) == static_cast<int>(qFloor(b.longitude() * 1E+4))
-            && static_cast<int>(qFloor(a.latitude() * 1E+4)) == static_cast<int>(qFloor(b.latitude() * 1E+4));
+
+            && static_cast<int>(qFloor(a.longitude() * GEO_PRECISION_FACTOR))
+            == static_cast<int>(qFloor(b.longitude() * GEO_PRECISION_FACTOR))
+
+            && static_cast<int>(qFloor(a.latitude() * GEO_PRECISION_FACTOR))
+            == static_cast<int>(qFloor(b.latitude() * GEO_PRECISION_FACTOR));
 }
 
 bool operator !=(const LocationInfo &a, const LocationInfo &b)

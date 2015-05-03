@@ -11,6 +11,9 @@ const int HUMIDITY_MAX = 100;
 const int WIND_DIRECTION_MIN = 0;
 const int WIND_DIRECTION_MAX = 359;
 const qreal WIND_SPEED_MIN = 0.0;
+const qreal TEMP_PRECISION_FACTOR = 10.0;
+const qreal PRESS_PRECISION_FACTOR = 10.0;
+const qreal W_SPEED_PRECISION_FACTOR = 10.0;
 
 Weather::Weather()
     : m_temperature(0.0),
@@ -20,8 +23,7 @@ Weather::Weather()
       m_windSpeed(0.0),
       m_state(WS_NonAvailable)
 { }
-Weather::~Weather()
-{ }
+Weather::~Weather() { }
 
 Weather::Weather(const Weather &other)
     : m_temperature(other.m_temperature),
@@ -107,11 +109,18 @@ QDataStream &operator <<(QDataStream &stream, const Weather &weather)
 
 bool operator ==(const Weather &a, const Weather &b)
 {
-    return  static_cast<int>(qFloor(a.temperature() * 10)) == static_cast<int>(qFloor(b.temperature() * 10))
-            && static_cast<int>(qFloor(a.pressure() * 10)) == static_cast<int>(qFloor(b.pressure() * 10))
+    return  static_cast<int>(qFloor(a.temperature() * TEMP_PRECISION_FACTOR))
+            == static_cast<int>(qFloor(b.temperature() * TEMP_PRECISION_FACTOR))
+
+            && static_cast<int>(qFloor(a.pressure() * PRESS_PRECISION_FACTOR))
+            == static_cast<int>(qFloor(b.pressure() * PRESS_PRECISION_FACTOR))
+
             && a.humidity() == b.humidity()
             && a.windDirection() == b.windDirection()
-            && static_cast<int>(qFloor(a.windSpeed() * 10)) == static_cast<int>(qFloor(b.windSpeed() * 10))
+
+            && static_cast<int>(qFloor(a.windSpeed() * W_SPEED_PRECISION_FACTOR))
+            == static_cast<int>(qFloor(b.windSpeed() * W_SPEED_PRECISION_FACTOR))
+
             && a.state() == b.state();
 
 }
