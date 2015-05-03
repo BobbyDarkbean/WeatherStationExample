@@ -34,7 +34,7 @@ void Location::readDataFrom(QDataStream &stream)
     Weather weather;
 
     stream >> m_locationInfo >> size;
-    for(int i = 0; i < size; ++i)
+    for (int i = 0; i < size; ++i)
     {
         stream >> date >> weather;
         m_weatherData.insert(date, weather);

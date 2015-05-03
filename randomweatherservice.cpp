@@ -1,3 +1,4 @@
+#include "location.h"
 #include "randomweatherservice.h"
 
 namespace WeatherStation {
@@ -113,7 +114,7 @@ qreal randomWindSpeed(WeatherState weatherState)
     case WS_SnowStorm:
         return qreal(qrand() % 80 + 1) / 10 + 12;   // 12.1 - 20.0
     default:
-        return qreal(qrand() % 150 + 1) / 10;       // 0.1 - 20.0
+        return qreal(qrand() % 150 + 1) / 10;       // 0.1 - 15.0
     }
 }
 
@@ -122,35 +123,30 @@ qreal randomWindSpeed(WeatherState weatherState)
 RandomWeatherService::RandomWeatherService() :
     WeatherService() { }
 
-void RandomWeatherService::acquireWeather(Location *)
+void RandomWeatherService::acquireWeather(Location *loc)
 {
-    if (false/*!loc*/)
+    if (!loc)
         return;
-    /*loc->clearWeatherData();*/
+    loc->clearWeatherData();
 
     const int MaxDays = 30;
 
-    qreal seed = randomTemperature(0/*loc->locationInfo().latitude()*/);
+    qreal seed = randomTemperature(loc->locationInfo().latitude());
+    QDate today = QDate::currentDate();
+
     for (int i = 0; i < MaxDays; ++i) {
-        qreal tm = randomPredictionalTemperature(seed, i);
-        qreal pres = randomPressure();
-        int hum = randomHumidity(pres);
+        Weather w;
+        w.setTemperature(randomPredictionalTemperature(seed, i));
+        w.setPressure(randomPressure());
+        w.setHumidity(randomHumidity(w.pressure()));
+        w.setState(randomWeatherState(w.temperature(), w.pressure(), w.humidity()));
+        w.setWindSpeed(randomWindSpeed(w.state()));
+        w.setWindDirection(randomWindDirectionDegrees());
 
-        WeatherState ws = randomWeatherState(tm, pres, hum);
-        qreal windSpd = randomWindSpeed(ws);
-        int windDir = randomWindDirectionDegrees();
-
-        Q_UNUSED(windSpd);
-        Q_UNUSED(windDir);
-
-        /*
-            setting Weather for respective date
-        */
+        loc->addWeather(today.addDays(i), w);
 
         /*seed = temp;*/
     }
-
-
 }
 
 RandomWeatherService::~RandomWeatherService() { }

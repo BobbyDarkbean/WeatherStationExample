@@ -3,7 +3,6 @@
 
 #include <QMap>
 #include <QDate>
-//#include <qobjectdefs.h> //Значит можно убрать?
 
 #include "weather.h"
 #include "locationinfo.h"
