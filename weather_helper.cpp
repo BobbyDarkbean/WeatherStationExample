@@ -3,6 +3,8 @@
 
 namespace WeatherStation {
 
+const QChar DEG_SIGN(0xb0);
+
 const QChar NORTH_SIGN('N');
 const QChar SOUTH_SIGN('S');
 const QChar EAST_SIGN('E');
@@ -16,7 +18,7 @@ QString coordinates_helper(qreal crdVal, QChar hemisphere)
 
     return QString("%1%2%3%4%5")
             .arg(QString::number(deg))
-            .arg(QChar(0xb0))
+            .arg(DEG_SIGN)
             .arg(QString::number(qMin(59.9, min), 'f', 1))
             .arg(QChar('\''))
             .arg(hemisphere);
@@ -74,7 +76,7 @@ QString windDirectionStr(WindDirection wd)
 QString temperatureUnitStr(TemperatureUnit tu)
 {
     switch (tu) {
-    case TU_Celcius:        return QString("%1C").arg(QChar(0xb0));
+    case TU_Celcius:        return QString("%1C").arg(DEG_SIGN);
     case TU_Fahrenheit:     return QString("F");
     default:                return QObject::tr("n/a");
     }
