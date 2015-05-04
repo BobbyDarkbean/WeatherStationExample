@@ -1,7 +1,6 @@
 #include <QDataStream>
 #include "locationpool.h"
 
-
 namespace WeatherStation{
 
 LocationPool::LocationPool(QObject *parent)
@@ -42,7 +41,7 @@ void LocationPool::addLocation(const LocationInfo &locationInfo)
     location->setLocationInfo(locationInfo);
 
     if (m_weatherService)
-    m_weatherService->acquireWeather(location);
+        m_weatherService->acquireWeather(location);
 
     m_locations.append(location);
     emit locationAdded(locationInfo);
@@ -61,7 +60,7 @@ void LocationPool::editLocation(int index, const LocationInfo &locationInfo)
     location->setLocationInfo(locationInfo);
 
     if (m_weatherService)
-    m_weatherService->acquireWeather(location);
+        m_weatherService->acquireWeather(location);
 
     emit locationEdited(index, locationInfo);
 }
