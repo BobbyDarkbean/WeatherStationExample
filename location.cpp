@@ -18,7 +18,7 @@ void Location::setLocationInfo(const LocationInfo &locationInfo)
 void Location::addWeather(const QDate &date, const Weather &weather)
 { m_weatherData.insert(date, weather); }
 
-Weather Location::weather(const QDate &date)
+Weather Location::weather(const QDate &date) const
 { return m_weatherData.value(date, Weather()); }
 
 void Location::clearWeatherData()

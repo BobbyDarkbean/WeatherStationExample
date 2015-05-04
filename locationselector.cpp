@@ -1,6 +1,6 @@
 #include "locationselector.h"
 
-namespace WeatherStation{
+namespace WeatherStation {
 
 const int LocationSelector::NoSelection = -1;
 
@@ -16,7 +16,8 @@ LocationSelector::~LocationSelector()
 
 const Location *LocationSelector::currentLocation() const
 {
-    //if (!m_locationPool)
+    if (!m_locationPool)
+        return 0;
 
     return m_locationPool->location(m_currentIndex);
 }
@@ -38,32 +39,32 @@ void LocationSelector::setLocationPool(const LocationPool *locationPool)
     m_locationPool = locationPool;
 }
 
-void LocationSelector::setCurrentIndex(int cur_index)
+void LocationSelector::setCurrentIndex(int index)
 {
     if (!m_locationPool)
         return;
 
-    if (m_currentIndex == cur_index)
+    if (m_currentIndex == index)
         return;
 
-    if (cur_index <= NoSelection || cur_index >= m_locationPool->count())
+    if (!(NoSelection <= index && index < m_locationPool->count()))
         return;
 
-    m_currentIndex = cur_index;
+    m_currentIndex = index;
     emit selectedLocationChanged(m_currentIndex);
 }
 
 void LocationSelector::setCurrentDate(const QDate &date)
 {
-    if(!m_locationPool)
+    if (!m_locationPool)
         return;
 
     if (m_currentDate == date)
         return;
 
-//    const Location *location = currentLocation();
-//    if (!location || location->weather(date) == Weather())
-//        return;
+    const Location *location = currentLocation();
+    if (!location || location->weather(date) == Weather())
+        return;
 
     m_currentDate = date;
     emit selectedDateChanged(m_currentDate);

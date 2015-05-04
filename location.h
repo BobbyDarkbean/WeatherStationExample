@@ -19,7 +19,7 @@ public:
     void setLocationInfo(const LocationInfo &locationInfo);
 
     void addWeather(const QDate &, const Weather &);
-    Weather weather(const QDate &);
+    Weather weather(const QDate &) const;
     void clearWeatherData();
 
     void readDataFrom(QDataStream &);

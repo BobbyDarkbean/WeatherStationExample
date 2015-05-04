@@ -4,7 +4,7 @@
 #include <QObject>
 #include "locationpool.h"
 
-namespace WeatherStation{
+namespace WeatherStation {
 
 class LocationSelector : public QObject
 {
@@ -19,14 +19,16 @@ public:
     QDate currentDate() const;
 
     const LocationPool *locationPool() const;
-    void setLocationPool(const LocationPool *value);
+    void setLocationPool(const LocationPool *);
+
+    static const int NoSelection;
 
 signals:
     void selectedLocationChanged(int index);
     void selectedDateChanged(const QDate &);
 
 public slots:
-    void setCurrentIndex(int cur_index);
+    void setCurrentIndex(int);
     void setCurrentDate(const QDate &);
 
 private:
@@ -35,8 +37,6 @@ private:
     int m_currentIndex;
     QDate m_currentDate;
     const LocationPool *m_locationPool;
-
-    static const int NoSelection;
 };
 
 } // namespace WeatherStation
