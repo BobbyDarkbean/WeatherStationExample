@@ -1,33 +1,7 @@
-TEMPLATE = app
-QT = core gui
+TEMPLATE = subdirs
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+CONFIG += ordered
 
-HEADERS += \
-    location.h \
-    locationinfo.h \
-    locationpool.h \
-    locationselector.h \
-    randomweatherservice.h \
-    unitinfo.h \
-    unitselector.h \
-    weather.h \
-    weather_global.h \
-    weather_helper.h \
-    weatherservice.h
-
-
-SOURCES += \
-    location.cpp \
-    locationinfo.cpp \
-    locationpool.cpp \
-    locationselector.cpp \
-    main.cpp \
-    randomweatherservice.cpp \
-    unitinfo.cpp \
-    unitselector.cpp \
-    weather.cpp \
-    weather_helper.cpp \
-    weatherservice.cpp
-
-
+SUBDIRS += \
+    kernel \
+    wstation
