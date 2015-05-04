@@ -21,8 +21,8 @@ Weather::Weather()
       m_humidity(0),
       m_windDirection(0),
       m_windSpeed(0.0),
-      m_state(WS_NonAvailable)
-{ }
+      m_state(WS_NonAvailable) { }
+
 Weather::~Weather() { }
 
 Weather::Weather(const Weather &other)
@@ -31,8 +31,7 @@ Weather::Weather(const Weather &other)
       m_humidity(other.m_humidity),
       m_windDirection(other.m_windDirection),
       m_windSpeed(other.m_windSpeed),
-      m_state(other.m_state)
-{ }
+      m_state(other.m_state) { }
 
 Weather &Weather::operator =(const Weather &other)
 {
@@ -109,7 +108,7 @@ QDataStream &operator <<(QDataStream &stream, const Weather &weather)
 
 bool operator ==(const Weather &a, const Weather &b)
 {
-    return  static_cast<int>(qFloor(a.temperature() * TEMP_PRECISION_FACTOR))
+    return static_cast<int>(qFloor(a.temperature() * TEMP_PRECISION_FACTOR))
             == static_cast<int>(qFloor(b.temperature() * TEMP_PRECISION_FACTOR))
 
             && static_cast<int>(qFloor(a.pressure() * PRESS_PRECISION_FACTOR))

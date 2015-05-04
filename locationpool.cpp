@@ -1,13 +1,12 @@
 #include <QDataStream>
 #include "locationpool.h"
 
-namespace WeatherStation{
+namespace WeatherStation {
 
 LocationPool::LocationPool(QObject *parent)
     : QObject(parent),
       m_weatherService(0),
-      m_locations()
-{ }
+      m_locations() { }
 
 LocationPool::~LocationPool()
 {

@@ -1,6 +1,5 @@
 #include <ctime>
 #include "location.h"
-
 #include "randomweatherservice.h"
 
 namespace WeatherStation {

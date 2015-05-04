@@ -8,11 +8,9 @@ LocationSelector::LocationSelector(QObject *parent)
     : QObject(parent),
       m_currentIndex(NoSelection),
       m_currentDate(),
-      m_locationPool(0)
-{ }
+      m_locationPool(0) { }
 
-LocationSelector::~LocationSelector()
-{ }
+LocationSelector::~LocationSelector() { }
 
 const Location *LocationSelector::currentLocation() const
 {
@@ -27,7 +25,6 @@ int LocationSelector::currentIndex() const
 
 QDate LocationSelector::currentDate() const
 { return m_currentDate; }
-
 
 const LocationPool *LocationSelector::locationPool() const
 { return m_locationPool; }
@@ -71,6 +68,3 @@ void LocationSelector::setCurrentDate(const QDate &date)
 }
 
 } // namespace WeatherStation
-
-
-

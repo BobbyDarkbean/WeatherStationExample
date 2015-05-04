@@ -13,7 +13,7 @@ public:
     virtual ~UnitInfo();
 
     UnitInfo(const UnitInfo &);
-    UnitInfo &operator=(const UnitInfo &);
+    UnitInfo &operator =(const UnitInfo &);
 
     TemperatureUnit tUnit() const;
     void setTUnit(TemperatureUnit);
@@ -26,8 +26,8 @@ private:
     PressureUnit m_pu;
 };
 
-bool operator==(const UnitInfo &, const UnitInfo &);
-bool operator!=(const UnitInfo &, const UnitInfo &);
+bool operator ==(const UnitInfo &, const UnitInfo &);
+bool operator !=(const UnitInfo &, const UnitInfo &);
 
 } // namespace WeatherStation
 

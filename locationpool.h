@@ -5,7 +5,7 @@
 #include "weatherservice.h"
 #include "location.h"
 
-namespace WeatherStation{
+namespace WeatherStation {
 
 class LocationPool : public QObject
 {
@@ -43,4 +43,3 @@ private:
 } // namespace WeatherStation
 
 #endif // LOCATIONPOOL_H
-

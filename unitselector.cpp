@@ -4,11 +4,9 @@ namespace WeatherStation {
 
 UnitSelector::UnitSelector(QObject *parent)
     : QObject(parent),
-      m_unitInfo()
-{ }
+      m_unitInfo() { }
 
-UnitSelector::~UnitSelector()
-{ }
+UnitSelector::~UnitSelector() { }
 
 UnitInfo UnitSelector::unitInfo() const
 { return m_unitInfo; }

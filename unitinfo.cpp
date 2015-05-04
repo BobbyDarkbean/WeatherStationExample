@@ -4,17 +4,15 @@ namespace WeatherStation {
 
 UnitInfo::UnitInfo()
     : m_tu(TU_Celcius),
-      m_pu(PU_MmHg)
-{ }
+      m_pu(PU_MmHg) { }
 
 UnitInfo::~UnitInfo() { }
 
 UnitInfo::UnitInfo(const UnitInfo &other)
     : m_tu(other.m_tu),
-      m_pu(other.m_pu)
-{ }
+      m_pu(other.m_pu) { }
 
-UnitInfo &UnitInfo::operator=(const UnitInfo &other)
+UnitInfo &UnitInfo::operator =(const UnitInfo &other)
 {
     m_tu = other.m_tu;
     m_pu = other.m_pu;
@@ -32,12 +30,12 @@ PressureUnit UnitInfo::pUnit() const
 void UnitInfo::setPUnit(PressureUnit pu)
 { m_pu = pu; }
 
-bool operator==(const UnitInfo &a, const UnitInfo &b)
+bool operator ==(const UnitInfo &a, const UnitInfo &b)
 {
     return a.tUnit() == b.tUnit() && a.pUnit() == b.pUnit();
 }
 
-bool operator!=(const UnitInfo &a, const UnitInfo &b)
+bool operator !=(const UnitInfo &a, const UnitInfo &b)
 {
     return !(a == b);
 }

@@ -23,7 +23,7 @@ QString coordinates_helper(qreal crdVal, QChar hemisphere)
             .arg(QChar('\''))
             .arg(hemisphere);
 }
-}
+} // namespace
 
 qreal fahrenheitTemperature(qreal celcius)
 {

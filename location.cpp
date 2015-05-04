@@ -5,8 +5,7 @@ namespace WeatherStation {
 
 Location::Location()
     : m_locationInfo(),
-      m_weatherData()
-{ }
+      m_weatherData() { }
 
 Location::~Location() { }
 

@@ -13,16 +13,14 @@ const qreal GEO_PRECISION_FACTOR = 1e+4;
 LocationInfo::LocationInfo()
     : m_description(),
       m_latitude(0.0),
-      m_longitude(0.0)
-{ }
-LocationInfo::~LocationInfo()
-{ }
+      m_longitude(0.0) { }
+
+LocationInfo::~LocationInfo() { }
 
 LocationInfo::LocationInfo(const LocationInfo &other)
     : m_description(other.m_description),
       m_latitude(other.m_latitude),
-      m_longitude(other.m_longitude)
-{ }
+      m_longitude(other.m_longitude) { }
 
 LocationInfo &LocationInfo::operator =(const LocationInfo &other)
 {
@@ -47,7 +45,6 @@ qreal LocationInfo::longitude() const
 { return m_longitude; }
 void LocationInfo::setLongitude(qreal value)
 { m_longitude = qBound(LONGITUDE_MIN, value, LONGITUDE_MAX); }
-
 
 QDataStream &operator >>(QDataStream &stream, LocationInfo &locationInfo)
 {
