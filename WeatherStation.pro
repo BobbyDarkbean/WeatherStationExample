@@ -7,6 +7,7 @@ HEADERS += \
     location.h \
     locationinfo.h \
     randomweatherservice.h \
+    unitinfo.h \
     weather.h \
     weather_global.h \
     weather_helper.h \
@@ -17,6 +18,7 @@ SOURCES += \
     locationinfo.cpp \
     main.cpp \
     randomweatherservice.cpp \
+    unitinfo.cpp \
     weather.cpp \
     weather_helper.cpp \
     weatherservice.cpp
