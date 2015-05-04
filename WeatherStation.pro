@@ -9,6 +9,8 @@ HEADERS += \
     locationpool.h \
     locationselector.h \
     randomweatherservice.h \
+    unitinfo.h \
+    unitselector.h \
     weather.h \
     weather_global.h \
     weather_helper.h \
@@ -22,6 +24,8 @@ SOURCES += \
     locationselector.cpp \
     main.cpp \
     randomweatherservice.cpp \
+    unitinfo.cpp \
+    unitselector.cpp \
     weather.cpp \
     weather_helper.cpp \
     weatherservice.cpp
