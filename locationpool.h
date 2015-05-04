@@ -2,7 +2,6 @@
 #define LOCATIONPOOL_H
 
 #include <QObject>
-#include <QList>
 #include "weatherservice.h"
 #include "location.h"
 
@@ -19,7 +18,7 @@ public:
     WeatherService *weatherService() const;
     void setWeatherService(WeatherService *);
 
-    Location *location(int index);
+    Location *location(int index) const;
     int count() const;
 
     void addLocation(const LocationInfo &);
@@ -34,13 +33,11 @@ signals:
     void locationEdited(int index, const LocationInfo &);
     void locationRemoved(int index);
 
-public slots:
-
 private:
     Q_DISABLE_COPY(LocationPool)
 
     WeatherService *m_weatherService;
-    QList<Location* > m_locations;
+    QList<Location *> m_locations;
 };
 
 } // namespace WeatherStation

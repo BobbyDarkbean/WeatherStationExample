@@ -20,21 +20,17 @@ LocationPool::~LocationPool()
 }
 
 WeatherService *LocationPool::weatherService() const
-{
-    return m_weatherService;
-}
+{ return m_weatherService; }
 
 void LocationPool::setWeatherService(WeatherService *weatherService)
-{
-    m_weatherService = weatherService;
-}
+{ m_weatherService = weatherService; }
 
-Location *LocationPool::location(int index)
+Location *LocationPool::location(int index) const
 {
     if (0 <= index && index < m_locations.size())
         return m_locations.at(index);
-    else
-        return 0;
+
+    return 0;
 }
 
 int LocationPool::count() const
@@ -44,30 +40,45 @@ void LocationPool::addLocation(const LocationInfo &locationInfo)
 {
     Location *location = new Location;
     location->setLocationInfo(locationInfo);
+
+    if (m_weatherService)
     m_weatherService->acquireWeather(location);
+
     m_locations.append(location);
     emit locationAdded(locationInfo);
 }
 
 void LocationPool::editLocation(int index, const LocationInfo &locationInfo)
 {
-    if (0 > index && index >= m_locations.size()) return;
-    if (m_locations.at(index)->locationInfo() == locationInfo) return;
-    m_locations.at(index)->setLocationInfo(locationInfo);
-    m_weatherService->acquireWeather(m_locations.at(index));
+    if (!(0 <= index && index < m_locations.size()))
+        return;
+
+    Location *location = m_locations.at(index);
+
+    if (location->locationInfo() == locationInfo)
+        return;
+
+    location->setLocationInfo(locationInfo);
+
+    if (m_weatherService)
+    m_weatherService->acquireWeather(location);
+
     emit locationEdited(index, locationInfo);
 }
 
 void LocationPool::removeLocation(int index)
 {
-    if (0 > index && index >= m_locations.size()) return;
+    if (!(0 <= index && index < m_locations.size()))
+        return;
+
     delete m_locations.takeAt(index);
     emit locationRemoved(index);
 }
 
 void LocationPool::readDataFrom(QDataStream &stream)
 {
-    m_locations.clear();
+    while (!m_locations.isEmpty())
+        delete m_locations.takeFirst();
 
     int size;
     stream >> size;
