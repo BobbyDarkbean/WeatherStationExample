@@ -5,6 +5,7 @@ DESTDIR = ../bin
 TARGET = kernel
 
 HEADERS += \
+    kernel_shared.h \
     location.h \
     locationinfo.h \
     locationpool.h \
