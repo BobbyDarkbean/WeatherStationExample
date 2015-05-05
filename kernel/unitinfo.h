@@ -1,12 +1,12 @@
 #ifndef UNITINFO_H
 #define UNITINFO_H
 
-#include <qobjectdefs.h>
+#include "kernel_shared.h"
 #include "weather_global.h"
 
 namespace WeatherStation {
 
-class UnitInfo
+class WS_KERNEL_SHARED UnitInfo
 {
 public:
     UnitInfo();
@@ -26,8 +26,8 @@ private:
     PressureUnit m_pu;
 };
 
-bool operator ==(const UnitInfo &, const UnitInfo &);
-bool operator !=(const UnitInfo &, const UnitInfo &);
+WS_KERNEL_SHARED bool operator ==(const UnitInfo &, const UnitInfo &);
+WS_KERNEL_SHARED bool operator !=(const UnitInfo &, const UnitInfo &);
 
 } // namespace WeatherStation
 

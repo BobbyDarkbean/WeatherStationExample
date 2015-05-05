@@ -1,13 +1,13 @@
 #ifndef WEATHERSERVICE_H
 #define WEATHERSERVICE_H
 
-#include <qobjectdefs.h>
+#include "kernel_shared.h"
 #include "weather_global.h"
 
 namespace WeatherStation {
 
 class Location;
-class WeatherService
+class WS_KERNEL_SHARED WeatherService
 {
 public:
     WeatherService();

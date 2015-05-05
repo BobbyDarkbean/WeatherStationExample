@@ -2,22 +2,23 @@
 #define WEATHER_HELPER_H
 
 #include <QString>
+#include "kernel_shared.h"
 #include "weather_global.h"
 
 namespace WeatherStation {
 
-qreal fahrenheitTemperature(qreal celcius);
-qreal millibarPressure(qreal mmHg);
+WS_KERNEL_SHARED qreal fahrenheitTemperature(qreal celcius);
+WS_KERNEL_SHARED qreal millibarPressure(qreal mmHg);
 
-WindDirection windDirection(int degrees);
+WS_KERNEL_SHARED WindDirection windDirection(int degrees);
 
-QString weatherStateStr(WeatherState ws);
-QString windDirectionStr(WindDirection wd);
-QString temperatureUnitStr(TemperatureUnit tu);
-QString pressureUnitStr(PressureUnit pu);
+WS_KERNEL_SHARED QString weatherStateStr(WeatherState ws);
+WS_KERNEL_SHARED QString windDirectionStr(WindDirection wd);
+WS_KERNEL_SHARED QString temperatureUnitStr(TemperatureUnit tu);
+WS_KERNEL_SHARED QString pressureUnitStr(PressureUnit pu);
 
-QString latitudeStr(qreal latitude);
-QString longitudeStr(qreal longitude);
+WS_KERNEL_SHARED QString latitudeStr(qreal latitude);
+WS_KERNEL_SHARED QString longitudeStr(qreal longitude);
 
 } // namespace WeatherStation
 

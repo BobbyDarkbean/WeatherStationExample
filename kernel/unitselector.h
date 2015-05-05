@@ -2,11 +2,12 @@
 #define UNITSELECTOR_H
 
 #include <QObject>
+#include "kernel_shared.h"
 #include "unitinfo.h"
 
 namespace WeatherStation {
 
-class UnitSelector : public QObject
+class WS_KERNEL_SHARED UnitSelector : public QObject
 {
     Q_OBJECT
 

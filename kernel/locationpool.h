@@ -2,12 +2,13 @@
 #define LOCATIONPOOL_H
 
 #include <QObject>
+#include "kernel_shared.h"
 #include "weatherservice.h"
 #include "location.h"
 
 namespace WeatherStation {
 
-class LocationPool : public QObject
+class WS_KERNEL_SHARED LocationPool : public QObject
 {
     Q_OBJECT
 

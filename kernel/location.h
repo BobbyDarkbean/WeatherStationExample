@@ -3,13 +3,13 @@
 
 #include <QMap>
 #include <QDate>
-
+#include "kernel_shared.h"
 #include "weather.h"
 #include "locationinfo.h"
 
 namespace WeatherStation {
 
-class Location
+class WS_KERNEL_SHARED Location
 {
 public:
     Location();

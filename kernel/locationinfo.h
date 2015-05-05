@@ -1,11 +1,11 @@
 #ifndef LOCATIONINFO_H
 #define LOCATIONINFO_H
 
-#include <qobjectdefs.h>
+#include "kernel_shared.h"
 
 namespace WeatherStation {
 
-class LocationInfo
+class WS_KERNEL_SHARED LocationInfo
 {
 public:
     LocationInfo();
@@ -30,10 +30,10 @@ private:
 
 };
 
-QDataStream &operator >>(QDataStream &, LocationInfo &);
-QDataStream &operator <<(QDataStream &, const LocationInfo &);
-bool operator ==(const LocationInfo &, const LocationInfo &);
-bool operator !=(const LocationInfo &, const LocationInfo &);
+WS_KERNEL_SHARED QDataStream &operator >>(QDataStream &, LocationInfo &);
+WS_KERNEL_SHARED QDataStream &operator <<(QDataStream &, const LocationInfo &);
+WS_KERNEL_SHARED bool operator ==(const LocationInfo &, const LocationInfo &);
+WS_KERNEL_SHARED bool operator !=(const LocationInfo &, const LocationInfo &);
 
 } // namespace WeatherStation
 
