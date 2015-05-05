@@ -7,7 +7,10 @@ DESTDIR = ../bin
 TARGET = gui
 
 HEADERS += \
-    newlocationdialog.h
+    newlocationdialog.h \
+    wsgui_shared.h
 
 SOURCES += \
     newlocationdialog.cpp
+
+DEFINES += WS_GUI_LIB
