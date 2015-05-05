@@ -6,7 +6,7 @@
 
 namespace WeatherStation {
 
-class UnitInfo
+class WS_KERNEL_SHARED UnitInfo
 {
 public:
     UnitInfo();
@@ -26,8 +26,8 @@ private:
     PressureUnit m_pu;
 };
 
-bool operator ==(const UnitInfo &, const UnitInfo &);
-bool operator !=(const UnitInfo &, const UnitInfo &);
+WS_KERNEL_SHARED bool operator ==(const UnitInfo &, const UnitInfo &);
+WS_KERNEL_SHARED bool operator !=(const UnitInfo &, const UnitInfo &);
 
 } // namespace WeatherStation
 

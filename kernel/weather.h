@@ -6,7 +6,7 @@
 
 namespace WeatherStation {
 
-class Weather
+class WS_KERNEL_SHARED Weather
 {
 public:
     Weather();
@@ -42,10 +42,10 @@ private:
     WeatherState m_state;
 };
 
-QDataStream &operator >>(QDataStream &, Weather &);
-QDataStream &operator <<(QDataStream &, const Weather &);
-bool operator ==(const Weather &, const Weather &);
-bool operator !=(const Weather &, const Weather &);
+WS_KERNEL_SHARED QDataStream &operator >>(QDataStream &, Weather &);
+WS_KERNEL_SHARED QDataStream &operator <<(QDataStream &, const Weather &);
+WS_KERNEL_SHARED bool operator ==(const Weather &, const Weather &);
+WS_KERNEL_SHARED bool operator !=(const Weather &, const Weather &);
 
 } // namespace WeatherStation
 

@@ -7,7 +7,7 @@
 namespace WeatherStation {
 
 class Location;
-class WeatherService
+class WS_KERNEL_SHARED WeatherService
 {
 public:
     WeatherService();

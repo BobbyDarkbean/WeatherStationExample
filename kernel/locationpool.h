@@ -8,7 +8,7 @@
 
 namespace WeatherStation {
 
-class LocationPool : public QObject
+class WS_KERNEL_SHARED LocationPool : public QObject
 {
     Q_OBJECT
 

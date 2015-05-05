@@ -9,7 +9,7 @@
 
 namespace WeatherStation {
 
-class Location
+class WS_KERNEL_SHARED Location
 {
 public:
     Location();

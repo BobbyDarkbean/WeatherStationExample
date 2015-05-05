@@ -7,7 +7,7 @@
 
 namespace WeatherStation {
 
-class UnitSelector : public QObject
+class WS_KERNEL_SHARED UnitSelector : public QObject
 {
     Q_OBJECT
 
