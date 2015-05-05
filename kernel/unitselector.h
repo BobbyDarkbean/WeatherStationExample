@@ -2,6 +2,7 @@
 #define UNITSELECTOR_H
 
 #include <QObject>
+#include "kernel_shared.h"
 #include "unitinfo.h"
 
 namespace WeatherStation {

@@ -1,7 +1,7 @@
 #ifndef UNITINFO_H
 #define UNITINFO_H
 
-#include <qobjectdefs.h>
+#include "kernel_shared.h"
 #include "weather_global.h"
 
 namespace WeatherStation {

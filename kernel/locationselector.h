@@ -2,6 +2,7 @@
 #define LOCATIONSELECTOR_H
 
 #include <QObject>
+#include "kernel_shared.h"
 #include "locationpool.h"
 
 namespace WeatherStation {

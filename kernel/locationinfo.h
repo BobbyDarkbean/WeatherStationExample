@@ -1,7 +1,7 @@
 #ifndef LOCATIONINFO_H
 #define LOCATIONINFO_H
 
-#include <qobjectdefs.h>
+#include "kernel_shared.h"
 
 namespace WeatherStation {
 

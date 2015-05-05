@@ -3,7 +3,7 @@
 
 #include <QMap>
 #include <QDate>
-
+#include "kernel_shared.h"
 #include "weather.h"
 #include "locationinfo.h"
 

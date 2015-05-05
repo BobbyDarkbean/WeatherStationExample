@@ -1,7 +1,7 @@
 #ifndef WEATHERSERVICE_H
 #define WEATHERSERVICE_H
 
-#include <qobjectdefs.h>
+#include "kernel_shared.h"
 #include "weather_global.h"
 
 namespace WeatherStation {

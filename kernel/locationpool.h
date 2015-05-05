@@ -2,6 +2,7 @@
 #define LOCATIONPOOL_H
 
 #include <QObject>
+#include "kernel_shared.h"
 #include "weatherservice.h"
 #include "location.h"
 

@@ -2,6 +2,7 @@
 #define WEATHER_HELPER_H
 
 #include <QString>
+#include "kernel_shared.h"
 #include "weather_global.h"
 
 namespace WeatherStation {
