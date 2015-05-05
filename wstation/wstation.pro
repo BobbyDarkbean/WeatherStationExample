@@ -14,5 +14,9 @@ LIBS += \
 DESTDIR = ../bin
 TARGET = ws
 
+HEADERS += \
+    randomweatherservice.h
+
 SOURCES += \
-    main.cpp
+    main.cpp \
+    randomweatherservice.cpp
