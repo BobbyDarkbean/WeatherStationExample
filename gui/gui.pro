@@ -3,6 +3,12 @@ QT = core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
+INCLUDEPATH += \
+    ../kernel
+
+LIBS += \
+    ../bin/libkernel.a
+
 DESTDIR = ../bin
 TARGET = gui
 
