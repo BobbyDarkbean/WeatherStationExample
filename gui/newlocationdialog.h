@@ -14,14 +14,23 @@ namespace WeatherStation {
 
 class WS_GUI_SHARED NewLocationDialog : public QDialog
 {
+    Q_OBJECT
+
 public:
     explicit NewLocationDialog(QWidget *parent = 0);
-    ~NewLocationDialog();
+    virtual ~NewLocationDialog();
+
+private slots:
+    void applySpinLatitude(int lat);
+    void applySliderLatitude(double lat);
+    void applySpinLongitude(int lon);
+    void applySliderLongitude(double lon);
 
 private:
     Q_DISABLE_COPY(NewLocationDialog)
 
     void initializeLayout();
+    void initializeSignalSlot();
 
     QLabel *lblDescription;
     QLineEdit *edtDescription;

@@ -4,6 +4,7 @@
 #include <QDoubleSpinBox>
 #include <QPushButton>
 #include <QBoxLayout>
+#include <qmath.h>
 #include "locationinfo.h"
 #include "newlocationdialog.h"
 
@@ -23,9 +24,32 @@ NewLocationDialog::NewLocationDialog(QWidget *parent)
       btnCancel(new QPushButton)
 {
     initializeLayout();
+    initializeSignalSlot();
 }
 
 NewLocationDialog::~NewLocationDialog() { }
+
+void NewLocationDialog::applySpinLatitude(int lat)
+{
+    if (static_cast<int>(qFloor(spbLatitude->value())) != lat)
+        spbLatitude->setValue(lat);
+}
+
+void NewLocationDialog::applySliderLatitude(double lat)
+{
+    sldLatitude->setValue(static_cast<int>(qFloor(lat)));
+}
+
+void NewLocationDialog::applySpinLongitude(int lon)
+{
+    if (static_cast<int>(qFloor(spbLongitude->value())) != lon)
+        spbLongitude->setValue(lon);
+}
+
+void NewLocationDialog::applySliderLongitude(double lon)
+{
+    sldLongitude->setValue(static_cast<int>(qFloor(lon)));
+}
 
 void NewLocationDialog::initializeLayout()
 {
@@ -69,6 +93,14 @@ void NewLocationDialog::initializeLayout()
     mainLayout->addLayout(latitudeLayout);
     mainLayout->addLayout(longitudeLayout);
     mainLayout->addLayout(buttonLayout);
+}
+
+void NewLocationDialog::initializeSignalSlot()
+{
+    connect(spbLatitude, SIGNAL(valueChanged(double)), this, SLOT(applySliderLatitude(double)));
+    connect(sldLatitude, SIGNAL(valueChanged(int)), this, SLOT(applySpinLatitude(int)));
+    connect(spbLongitude, SIGNAL(valueChanged(double)), this, SLOT(applySliderLongitude(double)));
+    connect(sldLongitude, SIGNAL(valueChanged(int)), this, SLOT(applySpinLongitude(int)));
 }
 
 } // namespace WeatherStation
