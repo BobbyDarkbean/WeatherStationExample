@@ -5,6 +5,11 @@
 
 namespace WeatherStation {
 
+extern WS_KERNEL_SHARED const qreal LATITUDE_MIN;
+extern WS_KERNEL_SHARED const qreal LATITUDE_MAX;
+extern WS_KERNEL_SHARED const qreal LONGITUDE_MIN;
+extern WS_KERNEL_SHARED const qreal LONGITUDE_MAX;
+
 class WS_KERNEL_SHARED LocationInfo
 {
 public:
