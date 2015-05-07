@@ -7,7 +7,7 @@
 class QLabel;
 class QLineEdit;
 class QSlider;
-class QSpinBox;
+class QDoubleSpinBox;
 class QPushButton;
 
 namespace WeatherStation {
@@ -21,23 +21,21 @@ public:
 private:
     Q_DISABLE_COPY(NewLocationDialog)
 
+    void initializeLayout();
+
     QLabel *lblDescription;
     QLineEdit *edtDescription;
 
     QLabel *lblLatitude;
     QSlider *sldLatitude;
-    QSpinBox *spbLatitude;
+    QDoubleSpinBox *spbLatitude;
 
     QLabel *lblLongitude;
     QSlider *sldLongitude;
-    QSpinBox *spbLongitude;
+    QDoubleSpinBox *spbLongitude;
 
     QPushButton *btnOk;
     QPushButton *btnCancel;
-
-    void initializeLayout();
-
-
 };
 
 } // namespace WeatherStation

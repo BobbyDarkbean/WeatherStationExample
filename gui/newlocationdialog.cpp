@@ -1,8 +1,7 @@
-#include <QtGui>
 #include <QLabel>
 #include <QLineEdit>
 #include <QSlider>
-#include <QSpinBox>
+#include <QDoubleSpinBox>
 #include <QPushButton>
 #include <QBoxLayout>
 #include "locationinfo.h"
@@ -16,27 +15,29 @@ NewLocationDialog::NewLocationDialog(QWidget *parent)
       edtDescription(new QLineEdit),
       lblLatitude(new QLabel),
       sldLatitude(new QSlider),
-      spbLatitude(new QSpinBox),
+      spbLatitude(new QDoubleSpinBox),
       lblLongitude(new QLabel),
       sldLongitude(new QSlider),
-      spbLongitude(new QSpinBox),
+      spbLongitude(new QDoubleSpinBox),
       btnOk(new QPushButton),
       btnCancel(new QPushButton)
-{ initializeLayout(); }
+{
+    initializeLayout();
+}
 
 NewLocationDialog::~NewLocationDialog() { }
 
 void NewLocationDialog::initializeLayout()
 {
-    lblDescription->setText(tr("Description: "));
+    lblDescription->setText(QString("%1: ").arg(tr("Description")));
     lblDescription->setBuddy(edtDescription);
 
-    lblLatitude->setText(tr("Latitude: "));
+    lblLatitude->setText(QString("%1: ").arg(tr("Latitude")));
     sldLatitude->setOrientation(Qt::Horizontal);
     sldLatitude->setRange(LATITUDE_MIN, LATITUDE_MAX);
     spbLatitude->setRange(LATITUDE_MIN, LATITUDE_MAX);
 
-    lblLongitude->setText(tr("Longitude: "));
+    lblLongitude->setText(QString("%1: ").arg(tr("Longitude")));
     sldLongitude->setOrientation(Qt::Horizontal);
     sldLongitude->setRange(LONGITUDE_MIN, LONGITUDE_MAX);
     spbLongitude->setRange(LONGITUDE_MIN, LONGITUDE_MAX);
@@ -44,30 +45,30 @@ void NewLocationDialog::initializeLayout()
     btnOk->setText(tr("OK"));
     btnCancel->setText(tr("Cancel"));
 
-    QBoxLayout *hltDescription = new QHBoxLayout;
-    hltDescription->addWidget(lblDescription);
-    hltDescription->addWidget(edtDescription);
+    QBoxLayout *descriptionLayout = new QHBoxLayout;
+    descriptionLayout->addWidget(lblDescription);
+    descriptionLayout->addWidget(edtDescription);
 
-    QBoxLayout *hltLatitude = new QHBoxLayout;
-    hltLatitude->addWidget(lblLatitude);
-    hltLatitude->addWidget(sldLatitude);
-    hltLatitude->addWidget(spbLatitude);
+    QBoxLayout *latitudeLayout = new QHBoxLayout;
+    latitudeLayout->addWidget(lblLatitude);
+    latitudeLayout->addWidget(sldLatitude);
+    latitudeLayout->addWidget(spbLatitude);
 
-    QBoxLayout *hltLongitude = new QHBoxLayout;
-    hltLongitude->addWidget(lblLongitude);
-    hltLongitude->addWidget(sldLongitude);
-    hltLongitude->addWidget(spbLongitude);
+    QBoxLayout *longitudeLayout = new QHBoxLayout;
+    longitudeLayout->addWidget(lblLongitude);
+    longitudeLayout->addWidget(sldLongitude);
+    longitudeLayout->addWidget(spbLongitude);
 
-    QBoxLayout *hltButton = new QHBoxLayout;
-    hltButton->addStretch();
-    hltButton->addWidget(btnOk);
-    hltButton->addWidget(btnCancel);
+    QBoxLayout *buttonLayout = new QHBoxLayout;
+    buttonLayout->addStretch();
+    buttonLayout->addWidget(btnOk);
+    buttonLayout->addWidget(btnCancel);
 
     QBoxLayout *mainLayout = new QVBoxLayout(this);
-    mainLayout->addLayout(hltDescription);
-    mainLayout->addLayout(hltLatitude);
-    mainLayout->addLayout(hltLongitude);
-    mainLayout->addLayout(hltButton);
+    mainLayout->addLayout(descriptionLayout);
+    mainLayout->addLayout(latitudeLayout);
+    mainLayout->addLayout(longitudeLayout);
+    mainLayout->addLayout(buttonLayout);
 }
 
 } // namespace WeatherStation
