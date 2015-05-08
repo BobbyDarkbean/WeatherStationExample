@@ -26,6 +26,8 @@ private slots:
     void applySliderLatitude(double lat);
     void applySpinLongitude(int lon);
     void applySliderLongitude(double lon);
+    void applyLatitudeOutput(double lat);
+    void applyLongitudeOutput(double lon);
 
 private:
     Q_DISABLE_COPY(NewLocationDialog)
@@ -51,7 +53,6 @@ private:
 
     QLabel *lblOutputLatitude;
     QLabel *lblOutputLongitude;
-
 };
 
 } // namespace WeatherStation
