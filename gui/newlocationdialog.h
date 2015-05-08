@@ -9,6 +9,7 @@ class QLineEdit;
 class QSlider;
 class QDoubleSpinBox;
 class QPushButton;
+class QGroupBox;
 
 namespace WeatherStation {
 
@@ -45,6 +46,8 @@ private:
 
     QPushButton *btnOk;
     QPushButton *btnCancel;
+
+    QGroupBox *grbCoordinates;
 };
 
 } // namespace WeatherStation

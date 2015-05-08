@@ -4,6 +4,7 @@
 #include <QDoubleSpinBox>
 #include <QPushButton>
 #include <QBoxLayout>
+#include <QGroupBox>
 #include <qmath.h>
 #include "locationinfo.h"
 #include "newlocationdialog.h"
@@ -21,7 +22,8 @@ NewLocationDialog::NewLocationDialog(QWidget *parent)
       sldLongitude(new QSlider),
       spbLongitude(new QDoubleSpinBox),
       btnOk(new QPushButton),
-      btnCancel(new QPushButton)
+      btnCancel(new QPushButton),
+      grbCoordinates(new QGroupBox)
 {
     initializeLayout();
     establishConnections();
@@ -69,6 +71,8 @@ void NewLocationDialog::initializeLayout()
     btnOk->setText(tr("OK"));
     btnCancel->setText(tr("Cancel"));
 
+    grbCoordinates->setTitle(tr("Coordinates"));
+
     QBoxLayout *descriptionLayout = new QHBoxLayout;
     descriptionLayout->addWidget(lblDescription);
     descriptionLayout->addWidget(edtDescription);
@@ -83,6 +87,10 @@ void NewLocationDialog::initializeLayout()
     longitudeLayout->addWidget(sldLongitude);
     longitudeLayout->addWidget(spbLongitude);
 
+    QBoxLayout *coordinatesLayout = new QVBoxLayout(grbCoordinates);
+    coordinatesLayout->addLayout(latitudeLayout);
+    coordinatesLayout->addLayout(longitudeLayout);
+
     QBoxLayout *buttonLayout = new QHBoxLayout;
     buttonLayout->addStretch();
     buttonLayout->addWidget(btnOk);
@@ -90,8 +98,7 @@ void NewLocationDialog::initializeLayout()
 
     QBoxLayout *mainLayout = new QVBoxLayout(this);
     mainLayout->addLayout(descriptionLayout);
-    mainLayout->addLayout(latitudeLayout);
-    mainLayout->addLayout(longitudeLayout);
+    mainLayout->addWidget(grbCoordinates);
     mainLayout->addLayout(buttonLayout);
 }
 
