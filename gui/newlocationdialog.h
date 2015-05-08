@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include "wsgui_shared.h"
+#include "locationinfo.h"
 
 class QLabel;
 class QLineEdit;
@@ -20,6 +21,8 @@ class WS_GUI_SHARED NewLocationDialog : public QDialog
 public:
     explicit NewLocationDialog(QWidget *parent = 0);
     virtual ~NewLocationDialog();
+
+    LocationInfo locationInfo() const;
 
 private slots:
     void applySpinLatitude(int lat);

@@ -6,7 +6,6 @@
 #include <QBoxLayout>
 #include <QGroupBox>
 #include <qmath.h>
-#include "locationinfo.h"
 #include "newlocationdialog.h"
 #include "weather_helper.h"
 
@@ -35,6 +34,17 @@ NewLocationDialog::NewLocationDialog(QWidget *parent)
 }
 
 NewLocationDialog::~NewLocationDialog() { }
+
+LocationInfo NewLocationDialog::locationInfo() const
+{
+    LocationInfo locInfo;
+
+    locInfo.setDescription(edtDescription->text());
+    locInfo.setLatitude(spbLatitude->value());
+    locInfo.setLongitude(spbLongitude->value());
+
+    return locInfo;
+}
 
 void NewLocationDialog::applySpinLatitude(int lat)
 {
