@@ -30,7 +30,7 @@ private:
     Q_DISABLE_COPY(NewLocationDialog)
 
     void initializeLayout();
-    void initializeSignalSlot();
+    void establishConnections();
 
     QLabel *lblDescription;
     QLineEdit *edtDescription;

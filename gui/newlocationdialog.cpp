@@ -24,7 +24,7 @@ NewLocationDialog::NewLocationDialog(QWidget *parent)
       btnCancel(new QPushButton)
 {
     initializeLayout();
-    initializeSignalSlot();
+    establishConnections();
 }
 
 NewLocationDialog::~NewLocationDialog() { }
@@ -95,12 +95,15 @@ void NewLocationDialog::initializeLayout()
     mainLayout->addLayout(buttonLayout);
 }
 
-void NewLocationDialog::initializeSignalSlot()
+void NewLocationDialog::establishConnections()
 {
     connect(spbLatitude, SIGNAL(valueChanged(double)), this, SLOT(applySliderLatitude(double)));
     connect(sldLatitude, SIGNAL(valueChanged(int)), this, SLOT(applySpinLatitude(int)));
     connect(spbLongitude, SIGNAL(valueChanged(double)), this, SLOT(applySliderLongitude(double)));
     connect(sldLongitude, SIGNAL(valueChanged(int)), this, SLOT(applySpinLongitude(int)));
+
+    connect(btnOk, SIGNAL(clicked()), this, SLOT(accept()));
+    connect(btnCancel, SIGNAL(clicked()), this, SLOT(reject()));
 }
 
 } // namespace WeatherStation
