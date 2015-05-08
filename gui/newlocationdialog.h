@@ -36,6 +36,8 @@ private:
     QLabel *lblDescription;
     QLineEdit *edtDescription;
 
+    QGroupBox *grbCoordinates;
+
     QLabel *lblLatitude;
     QSlider *sldLatitude;
     QDoubleSpinBox *spbLatitude;
@@ -47,7 +49,9 @@ private:
     QPushButton *btnOk;
     QPushButton *btnCancel;
 
-    QGroupBox *grbCoordinates;
+    QLabel *lblOutputLatitude;
+    QLabel *lblOutputLongitude;
+
 };
 
 } // namespace WeatherStation

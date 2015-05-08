@@ -15,6 +15,7 @@ NewLocationDialog::NewLocationDialog(QWidget *parent)
     : QDialog(parent),
       lblDescription(new QLabel),
       edtDescription(new QLineEdit),
+      grbCoordinates(new QGroupBox),
       lblLatitude(new QLabel),
       sldLatitude(new QSlider),
       spbLatitude(new QDoubleSpinBox),
@@ -23,7 +24,9 @@ NewLocationDialog::NewLocationDialog(QWidget *parent)
       spbLongitude(new QDoubleSpinBox),
       btnOk(new QPushButton),
       btnCancel(new QPushButton),
-      grbCoordinates(new QGroupBox)
+      lblOutputLatitude(new QLabel),
+      lblOutputLongitude(new QLabel)
+
 {
     initializeLayout();
     establishConnections();
@@ -87,9 +90,16 @@ void NewLocationDialog::initializeLayout()
     longitudeLayout->addWidget(sldLongitude);
     longitudeLayout->addWidget(spbLongitude);
 
+    QBoxLayout *coordsOutputLayout = new QHBoxLayout;
+    coordsOutputLayout->addStretch();
+    coordsOutputLayout->addWidget(lblOutputLatitude);
+    coordsOutputLayout->addWidget(lblLongitude);
+    coordsOutputLayout->addStretch();
+
     QBoxLayout *coordinatesLayout = new QVBoxLayout(grbCoordinates);
     coordinatesLayout->addLayout(latitudeLayout);
     coordinatesLayout->addLayout(longitudeLayout);
+    coordinatesLayout->addLayout(coordsOutputLayout);
 
     QBoxLayout *buttonLayout = new QHBoxLayout;
     buttonLayout->addStretch();
