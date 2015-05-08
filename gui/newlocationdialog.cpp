@@ -29,6 +29,7 @@ NewLocationDialog::NewLocationDialog(QWidget *parent)
       lblOutputLongitude(new QLabel)
 
 {
+    adjustComponents();
     initializeLayout();
     establishConnections();
 }
@@ -59,7 +60,7 @@ void NewLocationDialog::applyLatitudeOutput(double lat)
 void NewLocationDialog::applyLongitudeOutput(double lon)
 { lblOutputLongitude->setText(longitudeStr(lon)); }
 
-void NewLocationDialog::initializeLayout()
+void NewLocationDialog::adjustComponents()
 {
     lblDescription->setText(QString("%1: ").arg(tr("Description")));
     lblDescription->setBuddy(edtDescription);
@@ -93,7 +94,10 @@ void NewLocationDialog::initializeLayout()
 
     applyLatitudeOutput(0.0);
     applyLongitudeOutput(0.0);
+}
 
+void NewLocationDialog::initializeLayout()
+{
     QBoxLayout *descriptionLayout = new QHBoxLayout;
     descriptionLayout->addWidget(lblDescription);
     descriptionLayout->addWidget(edtDescription);

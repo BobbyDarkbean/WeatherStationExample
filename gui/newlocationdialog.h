@@ -32,6 +32,7 @@ private slots:
 private:
     Q_DISABLE_COPY(NewLocationDialog)
 
+    void adjustComponents();
     void initializeLayout();
     void establishConnections();
 
