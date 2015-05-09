@@ -23,6 +23,8 @@ public:
     explicit NewLocationDialog(QWidget *parent = 0);
     virtual ~NewLocationDialog();
 
+    QSize sizeHint() const;
+
     LocationInfo locationInfo() const;
 
 private slots:
@@ -39,6 +41,8 @@ private:
     void adjustComponents();
     void initializeLayout();
     void establishConnections();
+
+    QFrame *frmMain;
 
     QFrame *frmDescription;
 

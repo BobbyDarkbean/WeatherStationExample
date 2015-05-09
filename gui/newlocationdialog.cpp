@@ -13,6 +13,7 @@ namespace WeatherStation {
 
 NewLocationDialog::NewLocationDialog(QWidget *parent)
     : QDialog(parent),
+      frmMain(new QFrame),
       frmDescription(new QFrame),
       lblDescription(new QLabel),
       edtDescription(new QLineEdit),
@@ -35,6 +36,9 @@ NewLocationDialog::NewLocationDialog(QWidget *parent)
 }
 
 NewLocationDialog::~NewLocationDialog() { }
+
+QSize NewLocationDialog::sizeHint() const
+{ return QSize(440, 280); }
 
 LocationInfo NewLocationDialog::locationInfo() const
 {
@@ -73,6 +77,7 @@ void NewLocationDialog::applyLongitudeOutput(double lon)
 
 void NewLocationDialog::adjustComponents()
 {
+    frmMain->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Maximum);
     frmDescription->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Maximum);
 
     lblDescription->setText(QString("%1: ").arg(tr("Description")));
@@ -143,11 +148,17 @@ void NewLocationDialog::initializeLayout()
     coordsInputLayout->addLayout(sliderLayout);
     coordsInputLayout->addLayout(spinBoxLayout);
 
+    QBoxLayout *coordsOutputLayoutLat = new QHBoxLayout;
+    coordsOutputLayoutLat->addStretch();
+    coordsOutputLayoutLat->addWidget(lblOutputLatitude);
+
+    QBoxLayout *coordsOutputLayoutLon = new QHBoxLayout;
+    coordsOutputLayoutLon->addWidget(lblOutputLongitude);
+    coordsOutputLayoutLon->addStretch();
+
     QBoxLayout *coordsOutputLayout = new QHBoxLayout;
-    coordsOutputLayout->addStretch();
-    coordsOutputLayout->addWidget(lblOutputLatitude);
-    coordsOutputLayout->addWidget(lblOutputLongitude);
-    coordsOutputLayout->addStretch();
+    coordsOutputLayout->addLayout(coordsOutputLayoutLat);
+    coordsOutputLayout->addLayout(coordsOutputLayoutLon);
 
     QBoxLayout *coordinatesLayout = new QVBoxLayout(grbCoordinates);
     coordinatesLayout->addLayout(coordsInputLayout);
@@ -159,10 +170,13 @@ void NewLocationDialog::initializeLayout()
     buttonLayout->addWidget(btnOk);
     buttonLayout->addWidget(btnCancel);
 
-    QBoxLayout *mainLayout = new QVBoxLayout(this);
+    QBoxLayout *mainLayout = new QVBoxLayout(frmMain);
     mainLayout->addWidget(frmDescription);
     mainLayout->addWidget(grbCoordinates);
     mainLayout->addWidget(frmButtons);
+
+    QBoxLayout *dialogLayout = new QVBoxLayout(this);
+    dialogLayout->addWidget(frmMain);
 }
 
 void NewLocationDialog::establishConnections()
