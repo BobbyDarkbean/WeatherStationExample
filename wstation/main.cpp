@@ -1,9 +1,9 @@
-#include <QApplication>
 #include <QMainWindow>
+#include "weatherapplication.h"
 
 int main(int argc, char *argv[])
 {
-    QApplication app(argc, argv);
+    WeatherStation::WeatherApplication app(argc, argv);
 
     QMainWindow mWin;
     mWin.showMaximized();

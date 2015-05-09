@@ -15,8 +15,10 @@ DESTDIR = ../bin
 TARGET = ws
 
 HEADERS += \
-    randomweatherservice.h
+    randomweatherservice.h \
+    weatherapplication.h
 
 SOURCES += \
     main.cpp \
-    randomweatherservice.cpp
+    randomweatherservice.cpp \
+    weatherapplication.cpp
