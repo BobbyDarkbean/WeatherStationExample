@@ -10,6 +10,7 @@ class QLineEdit;
 class QSlider;
 class QDoubleSpinBox;
 class QPushButton;
+class QFrame;
 class QGroupBox;
 
 namespace WeatherStation {
@@ -39,6 +40,8 @@ private:
     void initializeLayout();
     void establishConnections();
 
+    QFrame *frmDescription;
+
     QLabel *lblDescription;
     QLineEdit *edtDescription;
 
@@ -52,11 +55,13 @@ private:
     QSlider *sldLongitude;
     QDoubleSpinBox *spbLongitude;
 
-    QPushButton *btnOk;
-    QPushButton *btnCancel;
-
     QLabel *lblOutputLatitude;
     QLabel *lblOutputLongitude;
+
+    QFrame *frmButtons;
+
+    QPushButton *btnOk;
+    QPushButton *btnCancel;
 };
 
 } // namespace WeatherStation
