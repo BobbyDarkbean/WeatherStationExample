@@ -2,6 +2,7 @@
 #define WEATHERAPPLICATION_H
 
 #include <QApplication>
+#include "imageloader.h"
 
 namespace WeatherStation {
 
@@ -28,6 +29,7 @@ private:
     void saveData();
 
     LocationPool *m_locationPool;
+    ImageLoader imgLoader;
 };
 
 } // namespace WeatherStation

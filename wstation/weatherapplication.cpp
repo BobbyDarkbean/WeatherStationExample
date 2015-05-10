@@ -5,7 +5,8 @@ namespace WeatherStation {
 
 WeatherApplication::WeatherApplication(int argc, char **argv)
     : QApplication(argc, argv),
-      m_locationPool(new LocationPool)
+      m_locationPool(new LocationPool),
+      imgLoader()
 {
     m_locationPool->setParent(this);
 
@@ -13,6 +14,13 @@ WeatherApplication::WeatherApplication(int argc, char **argv)
     loadData();
 
     setupLanguage("eng");
+
+    if (!m_locationPool->count()) {
+        LocationInfo defaultLocation;
+        defaultLocation.setDescription(tr("Default location"));
+
+        m_locationPool->addLocation(defaultLocation);
+    }
 }
 
 WeatherApplication::~WeatherApplication()

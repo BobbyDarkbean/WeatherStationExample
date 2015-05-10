@@ -1,6 +1,8 @@
 #include <QMenu>
 #include <QMenuBar>
+#include "locationpool.h"
 #include "newlocationdialog.h"
+#include "weatherapplication.h"
 #include "weatherstationwindow.h"
 
 namespace WeatherStation {
@@ -24,9 +26,8 @@ WeatherStationWindow::~WeatherStationWindow() { }
 void WeatherStationWindow::newLocation()
 {
     NewLocationDialog dialog(this);
-    if (dialog.exec())
-    {
-
+    if (dialog.exec()) {
+        wsApp->locationPool()->addLocation(dialog.locationInfo());
     }
 }
 
