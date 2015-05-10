@@ -37,14 +37,11 @@ NewLocationDialog::NewLocationDialog(QWidget *parent)
 
 NewLocationDialog::~NewLocationDialog() { }
 
-QSize NewLocationDialog::sizeHint() const
-{ return QSize(440, 280); }
-
 LocationInfo NewLocationDialog::locationInfo() const
 {
     LocationInfo locInfo;
 
-    locInfo.setDescription(edtDescription->text());
+    locInfo.setDescription(edtDescription->text().simplified());
     locInfo.setLatitude(spbLatitude->value());
     locInfo.setLongitude(spbLongitude->value());
 
@@ -77,12 +74,11 @@ void NewLocationDialog::applyLongitudeOutput(double lon)
 
 void NewLocationDialog::adjustComponents()
 {
-    frmMain->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Maximum);
-    frmDescription->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Maximum);
+    frmMain->setMinimumSize(400, 240);
+    frmMain->setMaximumSize(960, 240);
 
     lblDescription->setText(QString("%1: ").arg(tr("Description")));
     lblDescription->setBuddy(edtDescription);
-    edtDescription->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
 
     grbCoordinates->setTitle(tr("Coordinates"));
 
@@ -91,7 +87,6 @@ void NewLocationDialog::adjustComponents()
     sldLatitude->setRange(LATITUDE_MIN, LATITUDE_MAX);
     sldLatitude->setTickPosition(QSlider::TicksBelow);
     sldLatitude->setTickInterval(45);
-    sldLatitude->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
     sldLatitude->setValue(0);
     spbLatitude->setDecimals(3);
     spbLatitude->setSingleStep(0.001);
@@ -106,7 +101,6 @@ void NewLocationDialog::adjustComponents()
     sldLongitude->setRange(LONGITUDE_MIN, LONGITUDE_MAX);
     sldLongitude->setTickPosition(QSlider::TicksBelow);
     sldLongitude->setTickInterval(45);
-    sldLongitude->setSizePolicy(QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
     sldLongitude->setValue(0);
     spbLongitude->setDecimals(3);
     spbLongitude->setSingleStep(0.001);
@@ -115,8 +109,6 @@ void NewLocationDialog::adjustComponents()
     spbLongitude->setButtonSymbols(QAbstractSpinBox::PlusMinus);
     spbLongitude->setAlignment(Qt::AlignRight);
     spbLongitude->setValue(0.0);
-
-    frmButtons->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Maximum);
 
     btnOk->setText(tr("OK"));
     btnCancel->setText(tr("Cancel"));
@@ -176,6 +168,7 @@ void NewLocationDialog::initializeLayout()
     mainLayout->addWidget(frmButtons);
 
     QBoxLayout *dialogLayout = new QVBoxLayout(this);
+    dialogLayout->setSizeConstraint(QLayout::SetMinAndMaxSize);
     dialogLayout->addWidget(frmMain);
 }
 
