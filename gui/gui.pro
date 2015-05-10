@@ -13,10 +13,12 @@ DESTDIR = ../bin
 TARGET = gui
 
 HEADERS += \
+    locationselectionwidget.h \
     newlocationdialog.h \
     wsgui_shared.h
 
 SOURCES += \
+    locationselectionwidget.cpp \
     newlocationdialog.cpp
 
 DEFINES += WS_GUI_LIB
