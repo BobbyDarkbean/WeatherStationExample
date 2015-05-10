@@ -16,9 +16,11 @@ TARGET = ws
 
 HEADERS += \
     randomweatherservice.h \
-    weatherapplication.h
+    weatherapplication.h \
+    weatherstationwindow.h
 
 SOURCES += \
     main.cpp \
     randomweatherservice.cpp \
-    weatherapplication.cpp
+    weatherapplication.cpp \
+    weatherstationwindow.cpp

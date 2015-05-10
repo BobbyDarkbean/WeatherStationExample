@@ -1,11 +1,11 @@
 #include "weatherapplication.h"
-#include "newlocationdialog.h"
+#include "weatherstationwindow.h"
 
 int main(int argc, char *argv[])
 {
     WeatherStation::WeatherApplication app(argc, argv);
 
-    WeatherStation::NewLocationDialog mWin;
+    WeatherStation::WeatherStationWindow mWin;
     mWin.show();
 
     return app.exec();
