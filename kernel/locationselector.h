@@ -26,6 +26,7 @@ public:
 
 signals:
     void selectedLocationChanged(int index);
+    void selectedLocationChanged(const LocationInfo &);
     void selectedDateChanged(const QDate &);
 
 public slots:

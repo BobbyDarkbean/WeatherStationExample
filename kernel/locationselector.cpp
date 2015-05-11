@@ -49,6 +49,7 @@ void LocationSelector::setCurrentIndex(int index)
 
     m_currentIndex = index;
     emit selectedLocationChanged(m_currentIndex);
+    emit selectedLocationChanged(m_locationPool->location(m_currentIndex)->locationInfo());
 }
 
 void LocationSelector::setCurrentDate(const QDate &date)
