@@ -5,6 +5,8 @@
 
 namespace WeatherStation {
 
+class LocationSelectionWidget;
+
 class WeatherStationWindow : public QMainWindow
 {
     Q_OBJECT
@@ -20,11 +22,18 @@ public slots:
 
 private:
     void createMenus();
+    void createWidgets();
+    void createDocks();
 
     QAction *actNewLocation;
     QAction *actEditLocation;
     QAction *actRemoveLocation;
     QMenu *mnuLocation;
+
+    QMenu *mnuWindows;
+
+    LocationSelectionWidget *wdgtLocSelect;
+    QDockWidget *dckLocSelect;
 };
 
 #endif // WEATHERSTATIONWINDOW_H
