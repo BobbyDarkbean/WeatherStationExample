@@ -14,11 +14,13 @@ TARGET = gui
 
 HEADERS += \
     imageloader.h \
+    locationselectionwidget.h \
     newlocationdialog.h \
     wsgui_shared.h
 
 SOURCES += \
     imageloader.cpp \
+    locationselectionwidget.cpp \
     newlocationdialog.cpp
 
 DEFINES += WS_GUI_LIB
