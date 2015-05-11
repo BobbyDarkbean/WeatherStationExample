@@ -16,11 +16,13 @@ HEADERS += \
     imageloader.h \
     locationselectionwidget.h \
     newlocationdialog.h \
+    weatherwidget.h \
     wsgui_shared.h
 
 SOURCES += \
     imageloader.cpp \
     locationselectionwidget.cpp \
+    weatherwidget.cpp \
     newlocationdialog.cpp
 
 DEFINES += WS_GUI_LIB
