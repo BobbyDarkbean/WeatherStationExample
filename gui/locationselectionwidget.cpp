@@ -54,7 +54,7 @@ void LocationSelectionWidget::setSelectedLocationIndex(int index)
 void LocationSelectionWidget::applyLocationAdded(const LocationInfo &locationInfo)
 { cmbLocation->addItem(locationInfo.description()); }
 
-void LocationSelectionWidget::applyLocatedEdited(int index, const LocationInfo &locationInfo)
+void LocationSelectionWidget::applyLocationEdited(int index, const LocationInfo &locationInfo)
 {
     cmbLocation->setItemText(index, locationInfo.description());
     if (cmbLocation->currentIndex() == index)
