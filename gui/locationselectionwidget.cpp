@@ -2,6 +2,7 @@
 #include <QComboBox>
 #include <QGroupBox>
 #include <QBoxLayout>
+#include "weather_helper.h"
 #include "locationinfo.h"
 #include "locationselectionwidget.h"
 
@@ -42,13 +43,15 @@ LocationSelectionWidget::LocationSelectionWidget(QWidget *parent)
 LocationSelectionWidget::~LocationSelectionWidget() { }
 
 int LocationSelectionWidget::selectedLocationIndex() const
-{ return 0; }
+{ return cmbLocation->currentIndex(); }
 
 void LocationSelectionWidget::setSelectedLocationIndex(int index)
+{ cmbLocation->setCurrentIndex(index); }
+
+void LocationSelectionWidget::setSelectedLocationInfo(const LocationInfo &locationInfo)
 {
-    if (cmbLocation->currentIndex() == index)
-        return;
-    cmbLocation->setCurrentIndex(index);
+    lblLatitude->setText(latitudeStr(locationInfo.latitude()));
+    lblLongitude->setText(longitudeStr(locationInfo.longitude()));
 }
 
 void LocationSelectionWidget::applyLocationAdded(const LocationInfo &locationInfo)
@@ -58,7 +61,7 @@ void LocationSelectionWidget::applyLocationEdited(int index, const LocationInfo 
 {
     cmbLocation->setItemText(index, locationInfo.description());
     if (cmbLocation->currentIndex() == index)
-        cmbLocation->setCurrentIndex(index);
+        emit locationIndexSelected(index);
 }
 
 void LocationSelectionWidget::applyLocationRemoved(int index)

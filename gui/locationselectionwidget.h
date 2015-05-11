@@ -27,6 +27,8 @@ signals:
 
 public slots:
     void setSelectedLocationIndex(int);
+    void setSelectedLocationInfo(const LocationInfo &);
+
     void applyLocationAdded(const LocationInfo &);
     void applyLocationEdited(int index, const LocationInfo &);
     void applyLocationRemoved(int index);
