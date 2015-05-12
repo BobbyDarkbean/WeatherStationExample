@@ -7,6 +7,7 @@
 namespace WeatherStation {
 
 class LocationPool;
+class WeatherService;
 
 class WeatherApplication : public QApplication
 {
@@ -17,6 +18,7 @@ public:
     virtual ~WeatherApplication();
 
     LocationPool *locationPool() const;
+    WeatherService *weatherService() const;
 
 private:
     Q_DISABLE_COPY(WeatherApplication)
@@ -29,7 +31,9 @@ private:
     void saveData();
 
     LocationPool *m_locationPool;
-    ImageLoader imgLoader;
+    WeatherService *m_weatherService;
+
+    ImageLoader m_imageLoader;
 };
 
 } // namespace WeatherStation
