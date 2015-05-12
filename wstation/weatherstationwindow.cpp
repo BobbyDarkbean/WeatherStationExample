@@ -5,6 +5,7 @@
 #include "locationselector.h"
 #include "newlocationdialog.h"
 #include "locationselectionwidget.h"
+#include "weatherwidget.h"
 #include "weatherapplication.h"
 #include "weatherstationwindow.h"
 
@@ -19,7 +20,8 @@ WeatherStationWindow::WeatherStationWindow(QWidget *parent)
       mnuWindows(0),
       wdgtLocSelect(0),
       dckLocSelect(0),
-      m_locationSelector(0)
+      m_locationSelector(0),
+      m_weatherWidget(0)
 {
     createMenus();
     createWidgets();
@@ -73,6 +75,9 @@ void WeatherStationWindow::createWidgets()
     m_locationSelector = new LocationSelector(this);
     m_locationSelector->setLocationPool(locationPool);
 
+    m_weatherWidget = new WeatherWidget(this);
+    m_weatherWidget->setLocationPool(locationPool);
+
     wdgtLocSelect = new LocationSelectionWidget(this);
     for (int i = 0; i < locationPool->count(); ++i)
         wdgtLocSelect->applyLocationAdded(locationPool->location(i)->locationInfo());
@@ -91,7 +96,13 @@ void WeatherStationWindow::createWidgets()
     connect(wdgtLocSelect, SIGNAL(locationIndexSelected(int)),
             m_locationSelector, SLOT(setCurrentIndex(int)));
 
+    connect(m_locationSelector, SIGNAL(selectedLocationChanged(int)),
+            m_weatherWidget, SLOT(applySelectedLocation(int)));
+    connect(m_locationSelector, SIGNAL(selectedDateChanged(QDate)),
+            m_weatherWidget, SLOT(applySelectedDate(QDate)));
+
     m_locationSelector->setCurrentIndex(0);
+    setCentralWidget(m_weatherWidget);
 }
 
 void WeatherStationWindow::createDocks()

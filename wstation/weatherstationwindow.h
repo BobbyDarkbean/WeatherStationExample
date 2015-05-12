@@ -7,6 +7,7 @@ namespace WeatherStation {
 
 class LocationSelector;
 class LocationSelectionWidget;
+class WeatherWidget;
 
 class WeatherStationWindow : public QMainWindow
 {
@@ -37,6 +38,7 @@ private:
     QDockWidget *dckLocSelect;
 
     LocationSelector *m_locationSelector;
+    WeatherWidget *m_weatherWidget;
 };
 
 #endif // WEATHERSTATIONWINDOW_H
