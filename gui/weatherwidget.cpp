@@ -23,9 +23,9 @@ WeatherWidget::WeatherWidget(QWidget *parent)
       lblWindDirVal(new QLabel),
       lblWindSpeedVal(new QLabel)
 {
-    lblPressure->setText(QString("%1: ").arg(tr("Pressure")));
-    lblHumidity->setText(QString("%1: ").arg(tr("Humidity")));
-    lblWind->setText(QString("%1: ").arg(tr("Wind")));
+    lblPressure->setText(tr("Pressure"));
+    lblHumidity->setText(tr("Humidity"));
+    lblWind->setText(tr("Wind"));
 
     QBoxLayout *weatherStateLayout = new QVBoxLayout;
     weatherStateLayout->addWidget(lblWeatherStateImg);

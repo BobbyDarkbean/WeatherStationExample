@@ -22,7 +22,7 @@ HEADERS += \
 SOURCES += \
     imageloader.cpp \
     locationselectionwidget.cpp \
-    weatherwidget.cpp \
-    newlocationdialog.cpp
+    newlocationdialog.cpp \
+    weatherwidget.cpp
 
 DEFINES += WS_GUI_LIB

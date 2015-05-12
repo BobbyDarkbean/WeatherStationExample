@@ -77,12 +77,12 @@ void NewLocationDialog::adjustComponents()
     frmMain->setMinimumSize(400, 240);
     frmMain->setMaximumSize(960, 240);
 
-    lblDescription->setText(QString("%1: ").arg(tr("Description")));
+    lblDescription->setText(QString("%1:").arg(tr("Description")));
     lblDescription->setBuddy(edtDescription);
 
     grbCoordinates->setTitle(tr("Coordinates"));
 
-    lblLatitude->setText(QString("%1: ").arg(tr("Latitude")));
+    lblLatitude->setText(QString("%1:").arg(tr("Latitude")));
     sldLatitude->setOrientation(Qt::Horizontal);
     sldLatitude->setRange(LATITUDE_MIN, LATITUDE_MAX);
     sldLatitude->setTickPosition(QSlider::TicksBelow);
@@ -96,7 +96,7 @@ void NewLocationDialog::adjustComponents()
     spbLatitude->setAlignment(Qt::AlignRight);
     spbLatitude->setValue(0.0);
 
-    lblLongitude->setText(QString("%1: ").arg(tr("Longitude")));
+    lblLongitude->setText(QString("%1:").arg(tr("Longitude")));
     sldLongitude->setOrientation(Qt::Horizontal);
     sldLongitude->setRange(LONGITUDE_MIN, LONGITUDE_MAX);
     sldLongitude->setTickPosition(QSlider::TicksBelow);
