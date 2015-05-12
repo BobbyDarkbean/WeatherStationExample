@@ -41,10 +41,7 @@ void LocationSelector::setCurrentIndex(int index)
     if (!m_locationPool)
         return;
 
-    if (m_currentIndex == index)
-        return;
-
-    if (!(NoSelection <= index && index < m_locationPool->count()))
+    if (!((0 <= index && index < m_locationPool->count()) || index == NoSelection))
         return;
 
     m_currentIndex = index;
@@ -55,9 +52,6 @@ void LocationSelector::setCurrentIndex(int index)
 void LocationSelector::setCurrentDate(const QDate &date)
 {
     if (!m_locationPool)
-        return;
-
-    if (m_currentDate == date)
         return;
 
     const Location *location = currentLocation();
