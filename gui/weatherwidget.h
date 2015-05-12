@@ -3,13 +3,15 @@
 
 #include <QWidget>
 #include <QLabel>
-#include "weather.h"
+#include <QDate>
+#include "unitinfo.h"
 #include "wsgui_shared.h"
+
+class QFrame;
 
 namespace WeatherStation {
 
 class LocationPool;
-//class MeasurementOptions;
 class ImageLoader;
 
 class WS_GUI_SHARED WeatherWidget : public QWidget
@@ -21,14 +23,29 @@ public:
     virtual ~WeatherWidget();
 
     const LocationPool *locationPool() const;
+    void setLocationPool(const LocationPool *);
+
+    ImageLoader *imageLoader() const;
+    void setImageLoader(ImageLoader *);
+
+    const UnitInfo &unitInfo() const;
+
+public slots:
+    void applySelectedLocation(int index);
+    void applySelectedDate(const QDate &);
 
 private:
     Q_DISABLE_COPY(WeatherWidget)
 
-    //void drawWeather(Weather, MeasurementOptions);
+    void drawWeather();
+
+    QFrame *frmMain;
 
     const LocationPool *m_locationPool;
     ImageLoader *m_imageLoader;
+    UnitInfo m_unitInfo;
+    int m_cacheIndex;
+    QDate m_cacheDate;
 
     QLabel *lblWeatherStateImg;
     QLabel *lblWeatherStateVal;

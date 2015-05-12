@@ -16,7 +16,7 @@ LocationSelectionWidget::LocationSelectionWidget(QWidget *parent)
       lblLatitude(new QLabel),
       lblLongitude(new QLabel)
 {
-    lblLocation->setText(QString("%1: ").arg(tr("Location")));
+    lblLocation->setText(QString("%1:").arg(tr("Location")));
     lblLocation->setBuddy(cmbLocation);
 
     grbCoordinates->setTitle(tr("Coordinates"));
