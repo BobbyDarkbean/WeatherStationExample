@@ -1,3 +1,4 @@
+#include <QLabel>
 #include <QBoxLayout>
 #include "imageloader.h"
 #include "location.h"
@@ -11,11 +12,6 @@ namespace WeatherStation {
 WeatherWidget::WeatherWidget(QWidget *parent)
     : QWidget(parent),
       frmMain(new QFrame),
-      m_locationPool(0),
-      m_imageLoader(0),
-      m_unitInfo(),
-      m_cacheIndex(LocationSelector::NoSelection),
-      m_cacheDate(QDate::currentDate()),
       lblWeatherStateImg(new QLabel),
       lblWeatherStateVal(new QLabel),
       lblTemperatureImg(new QLabel),
@@ -28,7 +24,13 @@ WeatherWidget::WeatherWidget(QWidget *parent)
       lblHumidityVal(new QLabel),
       lblWind(new QLabel),
       lblWindDirVal(new QLabel),
-      lblWindSpeedVal(new QLabel)
+      lblWindSpeedVal(new QLabel),
+      m_locationPool(0),
+      m_imageLoader(0),
+      m_unitInfo(),
+      m_cacheIndex(LocationSelector::NoSelection),
+      m_cacheDate(QDate::currentDate())
+
 {
     lblPressure->setText(tr("Pressure"));
     lblHumidity->setText(tr("Humidity"));
@@ -115,12 +117,12 @@ void WeatherWidget::drawWeather()
 
     lblWeatherStateVal->setText(weatherStateStr(weather.state()));
     lblTemperatureVal->setText(QString("%1 %2")
-                        .arg(QString::number(weather.temperature()))
+                        .arg(QString::number(weather.temperature(), 'f', 1))
                         .arg(temperatureUnitStr(m_unitInfo.tUnit())));
     lblPressureVal->setText(QString("%1 %2")
-                        .arg(QString::number(weather.pressure()))
+                        .arg(QString::number(weather.pressure(), 'f', 1))
                         .arg(pressureUnitStr(m_unitInfo.pUnit())));
-    lblHumidityVal->setText(QString("%1\%").arg(QString::number(weather.humidity())));
+    lblHumidityVal->setText(QString("%1\%").arg(QString::number(weather.humidity(), 'f', 1)));
     lblWindDirVal->setText(windDirectionStr(windDirection(weather.windDirection())));
     lblWindSpeedVal->setText(QString::number(weather.windSpeed()));
 }

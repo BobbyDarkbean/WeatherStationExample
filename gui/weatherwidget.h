@@ -2,12 +2,12 @@
 #define WEATHERWIDGET_H
 
 #include <QWidget>
-#include <QLabel>
 #include <QDate>
 #include "unitinfo.h"
 #include "wsgui_shared.h"
 
 class QFrame;
+class QLabel;
 
 namespace WeatherStation {
 
@@ -40,13 +40,6 @@ private:
     void drawWeather();
 
     QFrame *frmMain;
-
-    const LocationPool *m_locationPool;
-    ImageLoader *m_imageLoader;
-    UnitInfo m_unitInfo;
-    int m_cacheIndex;
-    QDate m_cacheDate;
-
     QLabel *lblWeatherStateImg;
     QLabel *lblWeatherStateVal;
     QLabel *lblTemperatureImg;
@@ -60,6 +53,12 @@ private:
     QLabel *lblWind;
     QLabel *lblWindDirVal;
     QLabel *lblWindSpeedVal;
+
+    const LocationPool *m_locationPool;
+    ImageLoader *m_imageLoader;
+    UnitInfo m_unitInfo;
+    int m_cacheIndex;
+    QDate m_cacheDate;
 };
 
 } // namespace WeatherStation
