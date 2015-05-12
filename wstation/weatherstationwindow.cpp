@@ -82,6 +82,11 @@ void WeatherStationWindow::createWidgets()
     for (int i = 0; i < locationPool->count(); ++i)
         wdgtLocSelect->applyLocationAdded(locationPool->location(i)->locationInfo());
 
+    connect(m_locationSelector, SIGNAL(selectedLocationChanged(int)),
+            m_weatherWidget, SLOT(applySelectedLocation(int)));
+    connect(m_locationSelector, SIGNAL(selectedDateChanged(QDate)),
+            m_weatherWidget, SLOT(applySelectedDate(QDate)));
+
     connect(locationPool, SIGNAL(locationAdded(LocationInfo)),
             wdgtLocSelect, SLOT(applyLocationAdded(LocationInfo)));
     connect(locationPool, SIGNAL(locationEdited(int, LocationInfo)),
@@ -95,11 +100,6 @@ void WeatherStationWindow::createWidgets()
             wdgtLocSelect, SLOT(setSelectedLocationInfo(LocationInfo)));
     connect(wdgtLocSelect, SIGNAL(locationIndexSelected(int)),
             m_locationSelector, SLOT(setCurrentIndex(int)));
-
-    connect(m_locationSelector, SIGNAL(selectedLocationChanged(int)),
-            m_weatherWidget, SLOT(applySelectedLocation(int)));
-    connect(m_locationSelector, SIGNAL(selectedDateChanged(QDate)),
-            m_weatherWidget, SLOT(applySelectedDate(QDate)));
 
     m_locationSelector->setCurrentIndex(0);
     setCentralWidget(m_weatherWidget);

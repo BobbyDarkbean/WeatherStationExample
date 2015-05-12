@@ -30,11 +30,12 @@ WeatherWidget::WeatherWidget(QWidget *parent)
       m_unitInfo(),
       m_cacheIndex(LocationSelector::NoSelection),
       m_cacheDate(QDate::currentDate())
-
 {
     lblPressure->setText(tr("Pressure"));
     lblHumidity->setText(tr("Humidity"));
     lblWind->setText(tr("Wind"));
+
+    frmMain->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
 
     QBoxLayout *weatherStateLayout = new QVBoxLayout;
     weatherStateLayout->addWidget(lblWeatherStateImg);
@@ -47,6 +48,7 @@ WeatherWidget::WeatherWidget(QWidget *parent)
     QBoxLayout *leftLayout = new QVBoxLayout;
     leftLayout->addLayout(weatherStateLayout);
     leftLayout->addLayout(temperatureLayout);
+    leftLayout->addStretch();
 
     QBoxLayout *pressureLayout = new QHBoxLayout;
     pressureLayout->addWidget(lblPressureImg);
@@ -73,7 +75,7 @@ WeatherWidget::WeatherWidget(QWidget *parent)
     mainLayout->addLayout(leftLayout);
     mainLayout->addLayout(rightLayout);
 
-    QBoxLayout *widgetLayout = new QVBoxLayout(this);
+    QBoxLayout *widgetLayout = new QHBoxLayout(this);
     widgetLayout->addWidget(frmMain);
 }
 
