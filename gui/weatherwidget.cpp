@@ -86,9 +86,9 @@ const LocationPool *WeatherWidget::locationPool() const
 void WeatherWidget::setLocationPool(const LocationPool *locationPool)
 { m_locationPool = locationPool; }
 
-ImageLoader *WeatherWidget::imageLoader() const
+const ImageLoader *WeatherWidget::imageLoader() const
 { return m_imageLoader; }
-void WeatherWidget::setImageLoader(ImageLoader *imageLoader)
+void WeatherWidget::setImageLoader(const ImageLoader *imageLoader)
 { m_imageLoader = imageLoader; }
 
 const UnitInfo &WeatherWidget::unitInfo() const
@@ -127,6 +127,16 @@ void WeatherWidget::drawWeather()
     lblHumidityVal->setText(QString("%1\%").arg(QString::number(weather.humidity(), 'f', 1)));
     lblWindDirVal->setText(windDirectionStr(windDirection(weather.windDirection())));
     lblWindSpeedVal->setText(QString::number(weather.windSpeed()));
+
+    if (!m_imageLoader)
+        return;
+
+    lblPressureImg->setPixmap(m_imageLoader->pressureImage());
+    lblHumidityImg->setPixmap(m_imageLoader->humidityImage());
+    lblTemperatureImg->setPixmap(weather.temperature() > 0.0
+                                 ? m_imageLoader->hotTemperatureImage()
+                                 : m_imageLoader->coldTemperatureImage());
+    lblWeatherStateImg->setPixmap(m_imageLoader->weatherImage(weather.state()));
 }
 
 } // namespace WeatherStation

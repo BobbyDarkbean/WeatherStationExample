@@ -25,8 +25,8 @@ public:
     const LocationPool *locationPool() const;
     void setLocationPool(const LocationPool *);
 
-    ImageLoader *imageLoader() const;
-    void setImageLoader(ImageLoader *);
+    const ImageLoader *imageLoader() const;
+    void setImageLoader(const ImageLoader *);
 
     const UnitInfo &unitInfo() const;
 
@@ -55,7 +55,7 @@ private:
     QLabel *lblWindSpeedVal;
 
     const LocationPool *m_locationPool;
-    ImageLoader *m_imageLoader;
+    const ImageLoader *m_imageLoader;
     UnitInfo m_unitInfo;
     int m_cacheIndex;
     QDate m_cacheDate;
