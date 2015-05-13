@@ -14,11 +14,11 @@ public:
     ImageLoader();
     virtual ~ImageLoader();
 
-    QPixmap weatherImage(WeatherState state);
-    const QPixmap &pressureImage();
-    const QPixmap &humidityImage();
-    const QPixmap &hotTemperatureImage();
-    const QPixmap &coldTemperatureImage();
+    QPixmap weatherImage(WeatherState state) const;
+    const QPixmap &pressureImage() const;
+    const QPixmap &humidityImage() const;
+    const QPixmap &hotTemperatureImage() const;
+    const QPixmap &coldTemperatureImage() const;
 
     void registerWeatherImage(WeatherState state, const QString &filename);
     void registerPressureImage(const QString &filename);

@@ -12,19 +12,19 @@ ImageLoader::ImageLoader()
 
 ImageLoader::~ImageLoader() { }
 
-QPixmap ImageLoader::weatherImage(WeatherState state)
+QPixmap ImageLoader::weatherImage(WeatherState state) const
 { return m_weatherImgMap.value(state, m_defaultImg); }
 
-const QPixmap &ImageLoader::pressureImage()
+const QPixmap &ImageLoader::pressureImage() const
 { return m_pressureImg; }
 
-const QPixmap &ImageLoader::humidityImage()
+const QPixmap &ImageLoader::humidityImage() const
 { return m_humidityImg; }
 
-const QPixmap &ImageLoader::hotTemperatureImage()
+const QPixmap &ImageLoader::hotTemperatureImage() const
 { return m_hotTemperatureImg; }
 
-const QPixmap &ImageLoader::coldTemperatureImage()
+const QPixmap &ImageLoader::coldTemperatureImage() const
 { return m_coldTemperatureImg; }
 
 void ImageLoader::registerWeatherImage(WeatherState state, const QString &filename)
