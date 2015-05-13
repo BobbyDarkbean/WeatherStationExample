@@ -31,10 +31,16 @@ void ImageLoader::registerWeatherImage(WeatherState state, const QString &filena
 { m_weatherImgMap[state].load(filename, "png"); }
 
 void ImageLoader::registerPressureImage(const QString &filename)
-{ m_pressureImg.load(filename, "png"); }
+{
+    m_pressureImg.load(filename, "png");
+    m_pressureImg = m_pressureImg.scaled(QSize(48, 48), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+}
 
 void ImageLoader::registerHumidityImage(const QString &filename)
-{ m_humidityImg.load(filename, "png"); }
+{
+    m_humidityImg.load(filename, "png");
+    m_humidityImg = m_humidityImg.scaled(QSize(48, 48), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+}
 
 void ImageLoader::registerHotTemperatureImage(const QString &filename)
 { m_hotTemperatureImg.load(filename, "png"); }
