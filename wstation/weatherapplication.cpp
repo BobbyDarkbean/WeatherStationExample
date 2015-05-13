@@ -40,6 +40,9 @@ LocationPool *WeatherApplication::locationPool() const
 WeatherService *WeatherApplication::weatherService() const
 { return m_weatherService; }
 
+const ImageLoader *WeatherApplication::imageLoader() const
+{ return &m_imageLoader; }
+
 void WeatherApplication::setupLanguage(const QString &/*lcode*/)
 {
     // QTranslator processing

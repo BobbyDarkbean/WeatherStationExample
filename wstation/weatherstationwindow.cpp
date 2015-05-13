@@ -77,6 +77,7 @@ void WeatherStationWindow::createWidgets()
 
     m_weatherWidget = new WeatherWidget(this);
     m_weatherWidget->setLocationPool(locationPool);
+    m_weatherWidget->setImageLoader(wsApp->imageLoader());
 
     wdgtLocSelect = new LocationSelectionWidget(this);
     for (int i = 0; i < locationPool->count(); ++i)

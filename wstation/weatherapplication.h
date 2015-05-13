@@ -20,6 +20,8 @@ public:
     LocationPool *locationPool() const;
     WeatherService *weatherService() const;
 
+    const ImageLoader *imageLoader() const;
+
 private:
     Q_DISABLE_COPY(WeatherApplication)
 
