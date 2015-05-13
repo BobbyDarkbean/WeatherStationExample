@@ -52,7 +52,23 @@ void WeatherApplication::setupLanguage(const QString &/*lcode*/)
 
 void WeatherApplication::loadImages()
 {
-    // load images for WeatherWidget from .qrc
+    m_imageLoader.registerWeatherImage(WS_NonAvailable, ":/images/na.png");
+    m_imageLoader.registerWeatherImage(WS_Clear, ":/images/sunny.png");
+    m_imageLoader.registerWeatherImage(WS_PartlyCloudy, ":/images/pcloudy.png");
+    m_imageLoader.registerWeatherImage(WS_Clouds, ":/images/cloudy.png");
+    m_imageLoader.registerWeatherImage(WS_Rain, ":/images/rain.png");
+    m_imageLoader.registerWeatherImage(WS_Showers, ":/images/showers.png");
+    m_imageLoader.registerWeatherImage(WS_Storm, ":/images/storm.png");
+    m_imageLoader.registerWeatherImage(WS_IceRain, ":/images/icerain.png");
+    m_imageLoader.registerWeatherImage(WS_Hail, ":/images/hail.png");
+    m_imageLoader.registerWeatherImage(WS_Snow, ":/images/snow.png");
+    m_imageLoader.registerWeatherImage(WS_SnowStorm, ":/images/snowstorm.png");
+    m_imageLoader.registerWeatherImage(WS_Fog, ":/images/fog.png");
+
+    m_imageLoader.registerColdTemperatureImage(":/images/cold.png");
+    m_imageLoader.registerHotTemperatureImage(":/images/hot.png");
+    m_imageLoader.registerPressureImage(":/images/pressure.png");
+    m_imageLoader.registerHumidityImage(":/images/humidity.png");
 }
 
 void WeatherApplication::loadData()
