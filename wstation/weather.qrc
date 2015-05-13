@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="cloudy.png">images/cloudy.png</file>
+        <file alias="cold.png">images/cold.png</file>
+        <file alias="fog.png">images/fog.png</file>
+        <file alias="hail.png">images/hail.png</file>
+        <file alias="hot.png">images/hot.png</file>
+        <file alias="humidity.png">images/humidity.png</file>
+        <file alias="icerain.png">images/icerain.png</file>
+        <file alias="lrain.png">images/lrain.png</file>
+        <file alias="na.png">images/na.png</file>
+        <file alias="pcloudy.png">images/pcloudy.png</file>
+        <file alias="pressure.png">images/pressure.png</file>
+        <file alias="rain.png">images/rain.png</file>
+        <file alias="showers.png">images/showers.png</file>
+        <file alias="snow.png">images/snow.png</file>
+        <file alias="snowstorm.png">images/snowstorm.png</file>
+        <file alias="storm.png">images/storm.png</file>
+        <file alias="sunny.png">images/sunny.png</file>
+    </qresource>
+</RCC>

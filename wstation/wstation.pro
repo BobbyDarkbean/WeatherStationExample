@@ -24,3 +24,6 @@ SOURCES += \
     randomweatherservice.cpp \
     weatherapplication.cpp \
     weatherstationwindow.cpp
+
+RESOURCES += \
+    weather.qrc
