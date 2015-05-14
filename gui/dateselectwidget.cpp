@@ -8,6 +8,8 @@ DateSelectWidget::DateSelectWidget(QWidget *parent)
     : QWidget(parent),
       calDateSelect(new QCalendarWidget)
 {
+    calDateSelect->setMinimumDate(QDate::currentDate());
+
     QBoxLayout *mainLayout = new QHBoxLayout(this);
     mainLayout->addWidget(calDateSelect);
 
