@@ -5,6 +5,7 @@
 #include "locationselector.h"
 #include "newlocationdialog.h"
 #include "locationselectionwidget.h"
+#include "dateselectwidget.h"
 #include "weatherwidget.h"
 #include "weatherapplication.h"
 #include "weatherstationwindow.h"
@@ -20,6 +21,8 @@ WeatherStationWindow::WeatherStationWindow(QWidget *parent)
       mnuWindows(0),
       wdgtLocSelect(0),
       dckLocSelect(0),
+      wdgtDateSelect(0),
+      dckDateSelect(0),
       m_locationSelector(0),
       m_weatherWidget(0)
 {
@@ -83,6 +86,8 @@ void WeatherStationWindow::createWidgets()
     for (int i = 0; i < locationPool->count(); ++i)
         wdgtLocSelect->applyLocationAdded(locationPool->location(i)->locationInfo());
 
+    wdgtDateSelect = new DateSelectWidget(this);
+
     connect(m_locationSelector, SIGNAL(selectedLocationChanged(int)),
             m_weatherWidget, SLOT(applySelectedLocation(int)));
     connect(m_locationSelector, SIGNAL(selectedDateChanged(QDate)),
@@ -94,6 +99,11 @@ void WeatherStationWindow::createWidgets()
             wdgtLocSelect, SLOT(applyLocationEdited(int, LocationInfo)));
     connect(locationPool, SIGNAL(locationRemoved(int)),
             wdgtLocSelect, SLOT(applyLocationRemoved(int)));
+
+    connect(m_locationSelector, SIGNAL(selectedDateChanged(QDate)),
+            wdgtDateSelect, SLOT(setSelectedDate(QDate)));
+    connect(wdgtDateSelect, SIGNAL(dateSelected(QDate)),
+            m_locationSelector, SLOT(setCurrentDate(QDate)));
 
     connect(m_locationSelector, SIGNAL(selectedLocationChanged(int)),
             wdgtLocSelect, SLOT(setSelectedLocationIndex(int)));
@@ -113,7 +123,13 @@ void WeatherStationWindow::createDocks()
     dckLocSelect->setWidget(wdgtLocSelect);
     addDockWidget(Qt::LeftDockWidgetArea, dckLocSelect);
 
+    dckDateSelect = new QDockWidget(this);
+    dckDateSelect->setWindowTitle(tr("Date selection"));
+    dckDateSelect->setWidget(wdgtDateSelect);
+    addDockWidget(Qt::LeftDockWidgetArea, dckDateSelect);
+
     mnuWindows->addAction(dckLocSelect->toggleViewAction());
+    mnuWindows->addAction(dckDateSelect->toggleViewAction());
 }
 
 } // namespace WeatherStation

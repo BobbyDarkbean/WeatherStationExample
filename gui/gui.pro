@@ -13,6 +13,7 @@ DESTDIR = ../bin
 TARGET = gui
 
 HEADERS += \
+    dateselectwidget.h \
     imageloader.h \
     locationselectionwidget.h \
     newlocationdialog.h \
@@ -20,6 +21,7 @@ HEADERS += \
     wsgui_shared.h
 
 SOURCES += \
+    dateselectwidget.cpp \
     imageloader.cpp \
     locationselectionwidget.cpp \
     newlocationdialog.cpp \
