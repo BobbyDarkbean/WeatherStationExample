@@ -24,6 +24,7 @@ public:
     virtual ~NewLocationDialog();
 
     LocationInfo locationInfo() const;
+    void editLocationInfo(const LocationInfo &);
 
 private slots:
     void applySpinLatitude(int lat);

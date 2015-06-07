@@ -48,6 +48,13 @@ LocationInfo NewLocationDialog::locationInfo() const
     return locInfo;
 }
 
+void NewLocationDialog::editLocationInfo(const LocationInfo & locInfo)
+{
+    edtDescription->setText(locInfo.description());
+    spbLatitude->setValue(locInfo.latitude());
+    spbLongitude->setValue(locInfo.longitude());
+}
+
 void NewLocationDialog::applySpinLatitude(int lat)
 {
     if (static_cast<int>(qFloor(spbLatitude->value())) != lat)

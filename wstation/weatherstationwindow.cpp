@@ -41,7 +41,15 @@ void WeatherStationWindow::newLocation()
     }
 }
 
-void WeatherStationWindow::editLocation() { }
+void WeatherStationWindow::editLocation()
+{
+    int index = m_locationSelector->currentIndex();
+    NewLocationDialog dialog(this);
+    dialog.editLocationInfo(wsApp->locationPool()->location(index)->locationInfo());
+    if (dialog.exec()) {
+        wsApp->locationPool()->editLocation(index, dialog.locationInfo());
+    }
+}
 
 void WeatherStationWindow::removeLocation() { }
 
